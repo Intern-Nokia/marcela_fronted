@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Menu } from "antd";
+import { UserOutlined, BookOutlined, BulbOutlined } from "@ant-design/icons";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Menu mode="horizontal" className="menu">
+      <Menu.Item
+        className="menu-item"
+        key="employees"
+        icon={<UserOutlined style={{fontSize: '32px'}} />}
+      >
+        Empleados
+      </Menu.Item>
+      <Menu.Item
+        className="menu-item"
+        key="courses"
+        icon={<BookOutlined style={{fontSize: '32px'}}/>}
+      >
+        Cursos
+      </Menu.Item>
+      <Menu.Item
+        className="menu-item"
+        key="trainings"
+        icon={<BulbOutlined style={{fontSize: '32px'}} />}
+      >
+        Capacitaciones
+      </Menu.Item>
+    </Menu>
   );
 }
 
