@@ -1,19 +1,38 @@
-import "./App.css";
-import { Input, Menu, Divider } from "antd";
-import { UserOutlined, BookOutlined, BulbOutlined } from "@ant-design/icons";
-import { Outlet, useNavigate } from "react-router-dom";
-import Employees from "./components/Employees/Employees";
+import { BookOutlined, BulbOutlined, UserOutlined } from "@ant-design/icons";
+import { AutoComplete, Checkbox, Input, Menu } from "antd";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./App.css";
+import Courses from "./components/Courses/Courses";
+import employees from "./components/Employees/data";
+import Projects from "./components/Projects/Projects";
 
 const { Search } = Input;
+
+const filterEmployes = employees.map((p) => {
+  return { value: p.Nombre + ' ' + p.Apellidopaterno };
+});
 
 function App() {
   const navigate = useNavigate();
   const [employee, setEmployee] = useState(null);
 
+  const [viewCourse, setViewCourses] = useState(false)
+  const [viewProjects, setViewProjects] = useState(false)
+
+
+
   const handleSearch = (value) => {
     setEmployee(value);
   };
+
+  const handleCourses = (e) => {
+    setViewCourses(e.target.checked)
+  }
+
+  const handleProjects = (e) => {
+    setViewProjects(e.target.checked)
+  }
 
   return (
     <>
@@ -46,18 +65,26 @@ function App() {
         </Menu>
       </div>
       <div className="search">
-        <Search
-          placeholder="Buscar empleado"
-          allowClear
-          enterButton="Search"
-          size="large"
-          onSearch={handleSearch}
-        />
+        <AutoComplete
+          options={filterEmployes}
+          filterOption={(inputValue, option) =>
+            option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+          }
+        >
+          <Search
+            placeholder="Buscar empleado"
+            allowClear
+            enterButton="Search"
+            size="large"
+            onSearch={handleSearch}
+          />
+        </AutoComplete>
+        <Checkbox onChange={handleProjects}>Proyectos</Checkbox>
+        <Checkbox onChange={handleCourses}>Cursos</Checkbox>
+
       </div>
-      <Divider orientation="left">
-        <h2>Información del empleado</h2>
-      </Divider>
-      {employee && <Employees searchEmployee={employee} />}
+      {viewProjects && employee && <Projects searchEmployee={employee} />}
+      {viewCourse && employee && <Courses user={employee}/>}
     </>
   );
 }

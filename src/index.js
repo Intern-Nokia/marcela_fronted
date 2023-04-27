@@ -5,9 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
-import Courses from './components/Courses'
+import Courses from './components/Courses/Courses'
 import Employees from './components/Employees/Employees'
-import Trainings from './components/Trainings'
+import Projects from './components/Projects/Projects'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,7 +16,7 @@ root.render(
       <Route path='/' element={<App />}>
         <Route path='/employees' element={<Employees/>}/>
         <Route path='/courses' element={<Courses/>} />
-        <Route path='/training' element={<Trainings/>} />
+        <Route path='/training' element={<Projects/>} />
       </Route>
     </Routes>
     

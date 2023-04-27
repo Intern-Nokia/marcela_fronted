@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Avatar, List, Input, Button, Form, Modal, Radio, Card } from "antd";
+import { Button, Card, Divider, Form, Input, Modal } from "antd";
+import React, { useState } from "react";
 import "../../App.css";
 import employees from "./data";
 
 const employee = employees;
-const { Meta } = Card
+const { Meta } = Card;
 
-const randomInt = () => Math.floor(Math.random() * 10)
+const randomInt = () => Math.floor(Math.random() * 10);
 
 const CollectionCreateForm = ({ open, onCreate, onCancel }) => {
   const [form] = Form.useForm();
@@ -57,24 +56,24 @@ const CollectionCreateForm = ({ open, onCreate, onCancel }) => {
   );
 };
 
-const Employees = ({searchEmployee}) => {
-
-  console.log(searchEmployee)
+const Employees = ({ searchEmployee }) => {
+  console.log(searchEmployee);
   const [open, setOpen] = useState(false);
   const onCreate = (values) => {
     console.log("Received values of form: ", values);
     setOpen(false);
   };
 
-  const selectedEmployee = employee.filter((p) => p.Nombre === searchEmployee)
-  console.log(selectedEmployee)
+  const selectedEmployee = employee.filter((p) => p.Nombre === searchEmployee);
+  console.log(selectedEmployee);
 
   return (
     <div>
       <div className="title">
-        <Button type="primary" onClick={() => setOpen(true)}>
-          Nuevo empleado
-        </Button>
+        <Divider orientation="left">
+          <h2>Información del empleado</h2>
+        </Divider>
+
         <CollectionCreateForm
           open={open}
           onCreate={onCreate}
@@ -83,16 +82,22 @@ const Employees = ({searchEmployee}) => {
           }}
         />
       </div>
+      {/* <Button type="primary" onClick={() => setOpen(true)}>
+        Nuevo empleado
+      </Button> */}
 
-      <Card 
+      <Card
         hoverable={false}
         style={{
-          width: 240
+          width: 240,
         }}
-        cover={<img src={"https://picsum.photos/200?random="+randomInt}/>}>
-          <Meta title={selectedEmployee.Nombre + selectedEmployee.Apellidopaterno} description={selectedEmployee.Cargo}/>
-
-        </Card>
+        cover={<img src={"https://picsum.photos/200?random=" + randomInt} />}
+      >
+        <Meta
+          title={selectedEmployee.Nombre + selectedEmployee.Apellidopaterno}
+          description={selectedEmployee.Cargo}
+        />
+      </Card>
     </div>
   );
 };
