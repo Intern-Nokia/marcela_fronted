@@ -1,11 +1,10 @@
 import { BookOutlined, BulbOutlined, UserOutlined } from "@ant-design/icons";
-import { AutoComplete, Checkbox, Input, Menu } from "antd";
+import { AutoComplete, Input, Menu } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
-import Courses from "./components/Courses/Courses";
+import Employees from "./components/Employees/Employees";
 import employees from "./components/Employees/data";
-import Projects from "./components/Projects/Projects";
 
 const { Search } = Input;
 
@@ -17,22 +16,11 @@ function App() {
   const navigate = useNavigate();
   const [employee, setEmployee] = useState(null);
 
-  const [viewCourse, setViewCourses] = useState(false)
-  const [viewProjects, setViewProjects] = useState(false)
-
 
 
   const handleSearch = (value) => {
     setEmployee(value);
   };
-
-  const handleCourses = (e) => {
-    setViewCourses(e.target.checked)
-  }
-
-  const handleProjects = (e) => {
-    setViewProjects(e.target.checked)
-  }
 
   return (
     <>
@@ -79,12 +67,11 @@ function App() {
             onSearch={handleSearch}
           />
         </AutoComplete>
-        <Checkbox onChange={handleProjects}>Proyectos</Checkbox>
-        <Checkbox onChange={handleCourses}>Cursos</Checkbox>
 
       </div>
-      {viewProjects && employee && <Projects searchEmployee={employee} />}
-      {viewCourse && employee && <Courses user={employee}/>}
+      <Employees employee={employee}/>
+      {/* {viewProjects && employee && <Projects searchEmployee={employee} />} */}
+      {/* {viewCourse && employee && <Courses user={employee}/>} */}
     </>
   );
 }

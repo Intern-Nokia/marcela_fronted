@@ -1,24 +1,15 @@
 import { Divider, List, Typography, Collapse } from "antd";
 import { projects } from "./dataProjects";
-import { coursesUser } from "../Courses/dataCourses";
+import { cursosEmployee } from "../Courses/dataCourses";
+import {CloseCircleTwoTone} from '@ant-design/icons'
+
 
 const { Text } = Typography;
 const { Panel } = Collapse;
 
 const Projects = ({ employee }) => {
-  const verificarCurso = (cursosRequeridos, cursosUsuario) => {
-    const cursosVigentes = cursosUsuario.filter((c) => {
-      return c.vigente;
-    });
 
-    const cumpleCursos = cursosUsuario.map((c) => {
-      cursosRequeridos.includes(cursosVigentes.nombreCurso);
-    });
 
-    console.log("cumpleCursos", cumpleCursos);
-  };
-
-  const courses = coursesUser[0].cursos;
 
   return (
     <>
@@ -39,9 +30,6 @@ const Projects = ({ employee }) => {
                 title={p.nombre}
                 description="Descripcion del proyecto"
               />
-              <Text type={verificarCurso(p.requisitoCursos, courses)}>
-                {verificarCurso(p.requisitoCursos, courses)}
-              </Text>
             </List.Item>
             <Collapse>
               <Panel header="Requisitos">
@@ -57,7 +45,8 @@ const Projects = ({ employee }) => {
                 <h3>Cursos</h3>
                   <ul>
                     {p.requisitoCursos.map((c) => (
-                      <li>{c}</li>
+
+                      <li>{c} <CloseCircleTwoTone twoToneColor="#eb2f96" /></li>
                     ))}
                   </ul>
                 </div>

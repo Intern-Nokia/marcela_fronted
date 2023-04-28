@@ -1,51 +1,62 @@
 import { Divider, List, Typography } from "antd";
 import React, { useState } from "react";
-import { coursesUser } from "./dataCourses";
+import { cursosEmployee } from "./dataCourses";
+import moment from "moment";
 
 const { Text } = Typography;
 
-const Courses = ({ user }) => {
+export const vigencia = (fechaVencimiento) => {
 
-  const userCourses = coursesUser[0].cursos
+  const now = moment()
+  const vigencyDate = moment(fechaVencimiento)
+  const inAWeek = now.clone()
 
-  console.log(userCourses)
+  inAWeek.add(7, "days")
 
-  const vigencia = (vigente, proximoVencimiento) => {
-
-    if (proximoVencimiento) {
-        return ["warning", "Proximo a vencer"]
-    }
-    if (vigente) {
-        return ["success", "Vigente"]
-    }
-    return ["danger", "Vencido"]
-    
+  if (vigencyDate.isBetween(now, inAWeek)) {
+    return ["warning", "Curso proximo a vencer"]
   }
+
+  if (now.isBefore(vigencyDate)){
+    return ["success", "Curso vigente"]
+  }
+
+  return ["danger", "Curso vencido"]
+  
+}
+
+
+const Courses = ({ employee }) => {
+
+  const filterCurses = cursosEmployee.filter((c) =>  c.Legajo === employee.Legajo)
+
+  console.log("Employee", employee)
+  console.log(filterCurses)
+
+  
   
   return (
     <>
       <Divider orientation="left">
         <h2>Cursos del usuario</h2>
       </Divider>
-      {user && (
         <List
             style={{
                 maxWidth: '80%',
                 margin: 'auto auto'                
                 
             }}
-          dataSource={userCourses}
+          dataSource={filterCurses}
           renderItem={(course) => (
-            <List.Item key={course.nombreCurso}>
+            <List.Item key={course.Nombrecurso}>
               <List.Item.Meta
-                title={<a href="#">{course.nombreCurso}</a>}
-                description="Descripcion del curso"
+                title={<a href="#">{course.Nombrecurso}</a>}
+                description="descripcion curso"
               />
-              <Text type={vigencia(course.vigente, course.vencimientoProximo)[0]}>{vigencia(course.vigente, course.vencimientoProximo)[1]}</Text>
+              <div><Text strong type={vigencia(course.Fechavencimiento)[0]}>{vigencia(course.Fechavencimiento)[1]}</Text></div>
             </List.Item>
           )}
-        ></List>
-      )}
+        />
     </>
   );
 };

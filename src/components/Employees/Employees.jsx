@@ -1,105 +1,94 @@
-import { Button, Card, Divider, Form, Input, Modal } from "antd";
+import { Avatar, Button, Card, Divider, Form, Input, List, Modal, Typography } from "antd";
 import React, { useState } from "react";
 import "../../App.css";
 import employees from "./data";
+import Courses from "../Courses/Courses";
+import Projects from "../Projects/Projects";
+import { vigencia } from "../Courses/Courses";
+import { cursosEmployee } from "../Courses/dataCourses";
 
-const employee = employees;
 const { Meta } = Card;
+const { Text } = Typography
 
 const randomInt = () => Math.floor(Math.random() * 10);
 
-const CollectionCreateForm = ({ open, onCreate, onCancel }) => {
-  const [form] = Form.useForm();
-  return (
-    <Modal
-      open={open}
-      title="Crear un nuevo empleado"
-      okText="Crear"
-      cancelText="Cancelar"
-      onCancel={onCancel}
-      onOk={() =>
-        form
-          .validateFields()
-          .then((values) => {
-            form.resetFields();
-            onCreate(values);
-          })
-          .catch((info) => {
-            console.log("Validate failed:", info);
-          })
-      }
-    >
-      <Form
-        form={form}
-        layout="vertical"
-        name="form_in_modal"
-        initialValues={{
-          modifier: "public",
-        }}
-      >
-        {Object.keys(employee).map((item) => (
-          <Form.Item
-            name={item}
-            label={employee[item]["name"]}
-            rules={[
-              {
-                required: employee[item]["required"],
-                message: "Por favor diligencie este campo",
-              },
-            ]}
-          >
-            <Input type={employee[item]["type"]} />
-          </Form.Item>
-        ))}
-      </Form>
-    </Modal>
-  );
-};
+const Employees = ({ employee }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [status, setStatus] = useState("")
 
-const Employees = ({ searchEmployee }) => {
-  console.log(searchEmployee);
-  const [open, setOpen] = useState(false);
-  const onCreate = (values) => {
-    console.log("Received values of form: ", values);
-    setOpen(false);
+  const handleStatus = (Legajo) => {
+
+    const filterCurses = cursosEmployee.filter((c) => c.Legajo === Legajo)
+
+    if (filterCurses.length === 0){
+      return "No Cumple"
+    }
+
+    for (let i = 0; i < filterCurses.length; i++){
+      if (vigencia(filterCurses[i].Fechavencimiento)[0] !== "success"){
+        return "No Cumple"
+      }
+    }
+
+    return "Cumple"
+
+  }
+
+
+  const showModal = (item) => {
+    setSelectedEmployee(item)
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
   };
 
-  const selectedEmployee = employee.filter((p) => p.Nombre === searchEmployee);
-  console.log(selectedEmployee);
+  const filterEmployee = employees.filter((e) => {
+    if (employee === "") {
+      return e;
+    }
+    return e.Nombre + " " + e.Apellidopaterno === employee;
+  });
 
   return (
-    <div>
-      <div className="title">
-        <Divider orientation="left">
-          <h2>Información del empleado</h2>
-        </Divider>
-
-        <CollectionCreateForm
-          open={open}
-          onCreate={onCreate}
-          onCancel={() => {
-            setOpen(false);
-          }}
-        />
-      </div>
-      {/* <Button type="primary" onClick={() => setOpen(true)}>
-        Nuevo empleado
-      </Button> */}
-
-      <Card
-        hoverable={false}
+    <>
+      <Divider orientation="left">
+        <h2>Empleados</h2>
+      </Divider>
+      <List
         style={{
-          width: 240,
+          maxWidth: "80%",
+          margin: "auto auto",
         }}
-        cover={<img src={"https://picsum.photos/200?random=" + randomInt} />}
+        dataSource={filterEmployee}
+        renderItem={(item) => (
+          <List.Item key={item.Legajo} onClick={() => showModal(item)}>
+            <List.Item.Meta
+              avatar={
+                <Avatar
+                  src={"https://picsum.photos/200/300?random=" + randomInt}
+                />
+              }
+              title={item.Nombre + " " + item.Apellidopaterno}
+            />
+            <div>
+              <h3><Text type={handleStatus(item.Legajo) === "Cumple" ? "success" : "danger"}>{handleStatus(item.Legajo)}</Text></h3>
+            </div>
+          </List.Item>
+        )}
+      />
+      <Modal
+        title="Información del empleado"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleOk}
+        width={800}
       >
-        <Meta
-          title={selectedEmployee.Nombre + selectedEmployee.Apellidopaterno}
-          description={selectedEmployee.Cargo}
-        />
-      </Card>
-    </div>
+        {selectedEmployee && <Courses employee={selectedEmployee} />}
+        {selectedEmployee && <Projects employee={selectedEmployee}/>}
+      </Modal>
+    </>
   );
 };
-
 export default Employees;
