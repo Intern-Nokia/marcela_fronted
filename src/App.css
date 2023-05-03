@@ -38,6 +38,13 @@
   color: #61dafb;
 }
 
+.create-btn {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 80%;
+  margin: 20px auto;
+}
+
 
 .menu {
   background: black;

@@ -1,4 +1,4 @@
-import { Avatar, Button, Card, Divider, Form, Input, List, Modal, Typography } from "antd";
+import { Avatar, Button, Card, Checkbox, Divider, Form, Input, List, Modal, Typography } from "antd";
 import React, { useState } from "react";
 import "../../App.css";
 import employees from "./data";

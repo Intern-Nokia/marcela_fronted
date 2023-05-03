@@ -266,7 +266,7 @@ export const cursosEmployee = [
   },
   {
       "Apellidopaterno": "Beiza",
-      "Fechavencimiento": "2023/04/30 0:00:00",
+      "Fechavencimiento": "2023/05/15 0:00:00",
       "Legajo": "EC00027",
       "Nombre": "Joaquín",
       "Nombrecurso": "Uso y manejo de extintores"
