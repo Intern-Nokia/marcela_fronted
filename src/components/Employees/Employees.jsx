@@ -1,43 +1,48 @@
-import { Avatar, Button, Card, Checkbox, Divider, Form, Input, List, Modal, Typography } from "antd";
+import { AutoComplete, Avatar, Divider, List, Modal, Typography, Input } from "antd";
 import React, { useState } from "react";
 import "../../App.css";
-import employees from "./data";
-import Courses from "../Courses/Courses";
-import Projects from "../Projects/Projects";
-import { vigencia } from "../Courses/Courses";
+import Courses, { vigencia } from "../Courses/Courses";
 import { cursosEmployee } from "../Courses/dataCourses";
+import Projects from "../Projects/Projects";
+import employees from "./data";
 
-const { Meta } = Card;
-const { Text } = Typography
+const { Text } = Typography;
+const { Search} = Input
 
 const randomInt = () => Math.floor(Math.random() * 10);
 
-const Employees = ({ employee }) => {
+const filterEmployes = employees.map((p) => {
+  return { value: p.Nombre + ' ' + p.Apellidopaterno };
+});
+
+const Employees = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
-  const [status, setStatus] = useState("")
+  const [status, setStatus] = useState("");
+  const [employee, setEmployee] = useState(null);
+
+  const handleSearch = (value) => {
+    setEmployee(value);
+  };
 
   const handleStatus = (Legajo) => {
+    const filterCurses = cursosEmployee.filter((c) => c.Legajo === Legajo);
 
-    const filterCurses = cursosEmployee.filter((c) => c.Legajo === Legajo)
-
-    if (filterCurses.length === 0){
-      return "No Cumple"
+    if (filterCurses.length === 0) {
+      return "No Cumple";
     }
 
-    for (let i = 0; i < filterCurses.length; i++){
-      if (vigencia(filterCurses[i].Fechavencimiento)[0] !== "success"){
-        return "No Cumple"
+    for (let i = 0; i < filterCurses.length; i++) {
+      if (vigencia(filterCurses[i].Fechavencimiento)[0] !== "success") {
+        return "No Cumple";
       }
     }
 
-    return "Cumple"
-
-  }
-
+    return "Cumple";
+  };
 
   const showModal = (item) => {
-    setSelectedEmployee(item)
+    setSelectedEmployee(item);
     setIsModalOpen(true);
   };
   const handleOk = () => {
@@ -53,6 +58,22 @@ const Employees = ({ employee }) => {
 
   return (
     <>
+      <div className="search">
+        <AutoComplete
+          options={filterEmployes}
+          filterOption={(inputValue, option) =>
+            option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+          }
+        >
+          <Search
+            placeholder="Buscar empleado"
+            allowClear
+            enterButton="Search"
+            size="large"
+            onSearch={handleSearch}
+          />
+        </AutoComplete>
+      </div>
       <Divider orientation="left">
         <h2>Empleados</h2>
       </Divider>
@@ -73,7 +94,17 @@ const Employees = ({ employee }) => {
               title={item.Nombre + " " + item.Apellidopaterno}
             />
             <div>
-              <h3><Text type={handleStatus(item.Legajo) === "Cumple" ? "success" : "danger"}>{handleStatus(item.Legajo)}</Text></h3>
+              <h3>
+                <Text
+                  type={
+                    handleStatus(item.Legajo) === "Cumple"
+                      ? "success"
+                      : "danger"
+                  }
+                >
+                  {handleStatus(item.Legajo)}
+                </Text>
+              </h3>
             </div>
           </List.Item>
         )}
@@ -86,7 +117,7 @@ const Employees = ({ employee }) => {
         width={800}
       >
         {selectedEmployee && <Courses employee={selectedEmployee} />}
-        {selectedEmployee && <Projects employee={selectedEmployee}/>}
+        {selectedEmployee && <Projects employee={selectedEmployee} />}
       </Modal>
     </>
   );

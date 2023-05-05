@@ -1,8 +1,18 @@
-import { Button, Divider, List, Typography, Form, Modal, Input } from "antd";
+import {
+  Button,
+  Divider,
+  List,
+  Typography,
+  Form,
+  Modal,
+  Input,
+  Select,
+} from "antd";
 import React, { useState } from "react";
 import { cursosEmployee } from "./dataCourses";
 import moment from "moment";
 import "../../App.css";
+import { courses } from "./dataCourses";
 
 const { Text } = Typography;
 
@@ -24,21 +34,66 @@ export const vigencia = (fechaVencimiento) => {
   return ["danger", "Curso vencido"];
 };
 
-const Courses = ({ employee }) => {
-  const [form] = Form.useForm();
+function AllCourses() {
+  return (
+    <List
+      itemLayout="vertical"
+      size="large"
+      pagination={{
+        pageSize: 5,
+      }}
+      dataSource={courses}
+      renderItem={(item, i) => (
+        <List.Item
+          key={item.Nombrecurso}
+          extra={
+            <img
+              height={272}
+              alt="logo"
+              src={"https://picsum.photos/200/300?random=" + i}
+            />
+          }
+        >
+          <List.Item.Meta
+            title={item.Nombrecurso}
+            description={
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum leo velit, et luctus nibh pulvinar et. Ut tristique erat quis velit accumsan, ut porta lorem varius. Donec ac purus elementum, aliquam orci non, iaculis leo. Suspendisse rhoncus tempor suscipit. Integer facilisis nisi elit, eu congue tellus volutpat vel. Praesent ullamcorper, nulla eget pharetra pulvinar, elit mi iaculis diam, non pulvinar metus nulla ultricies mauris. Sed felis ipsum, egestas vitae nunc in, placerat molestie eros. Nam nisl tellus, malesuada vel varius gravida, luctus a eros. Nam mattis urna at sem aliquet, at vulputate enim finibus. Duis semper, est non porta euismod, leo ligula suscipit ligula, eget iaculis nisi ex et libero. Nam vehicula facilisis sapien nec sollicitudin. Ut augue ligula, ultrices non felis at, vestibulum scelerisque magna."
+            }
+          />
+        </List.Item>
+      )}
+    />
+  );
+}
 
+function Courses({ employee }) {
+
+  const [form] = Form.useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+
+  if (employee === undefined) {
+    return AllCourses();
+  }
+
+  const listCourses = courses.map((c) => {
+    return {
+      value: c.Nombrecurso,
+      label: c.Nombrecurso,
+    };
+  });
 
   const showModal = () => {
     setIsModalOpen(true);
   };
 
   const onCreate = (values) => {
-    values["Legajo"] = employee.Legajo
-    values["Apellidopaterno"] = employee.Apellidopaterno
-    values["Nombre"] = employee.Nombre
-    
-    cursosEmployee.push(values)
+    values["Legajo"] = employee.Legajo;
+    values["Apellidopaterno"] = employee.Apellidopaterno;
+    values["Nombre"] = employee.Nombre;
+
+    cursosEmployee.push(values);
     setIsModalOpen(false);
   };
 
@@ -105,7 +160,7 @@ const Courses = ({ employee }) => {
       >
         <Form
           form={form}
-          layout="inline"
+          layout="vertical"
           name="Agregar curso"
           initialValues={{
             modifier: "public",
@@ -121,7 +176,7 @@ const Courses = ({ employee }) => {
               },
             ]}
           >
-            <Input></Input>
+            <Select options={listCourses} />
           </Form.Item>
           <Form.Item
             name="FechaCurso"
@@ -131,10 +186,11 @@ const Courses = ({ employee }) => {
                 required: true,
                 message: "Por favor diligencie este campo",
               },
-            ]}>
-              <Input type="date" />
-            </Form.Item>
-            <Form.Item
+            ]}
+          >
+            <Input type="date" />
+          </Form.Item>
+          <Form.Item
             name="Fechavencimiento"
             label="Fecha vencimiento del curso"
             rules={[
@@ -142,13 +198,14 @@ const Courses = ({ employee }) => {
                 required: true,
                 message: "Por favor diligencie este campo",
               },
-            ]}>
-              <Input type="date" />
-            </Form.Item>
+            ]}
+          >
+            <Input type="date" />
+          </Form.Item>
         </Form>
       </Modal>
     </>
   );
-};
+}
 
 export default Courses;
