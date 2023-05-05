@@ -281,4 +281,400 @@ const employees = [
   },
 ];
 
+export const cargoPersonal = [
+	{
+		"Legajo" : "EC00086",
+		"Nombre" : "Estanislao",
+		"Apellidopaterno" : "Yelich",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC00116",
+		"Nombre" : "Rafael",
+		"Apellidopaterno" : "Parraguéz",
+		"Nombrecargo" : "Chofer",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC00140",
+		"Nombre" : "Willer",
+		"Apellidopaterno" : "Surco",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC00221",
+		"Nombre" : "Rene",
+		"Apellidopaterno" : "Rocha",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC00280",
+		"Nombre" : "Beatriz",
+		"Apellidopaterno" : "Carrasco",
+		"Nombrecargo" : "Administrativo",
+		"Area" : "Administracion"
+	},
+	{
+		"Legajo" : "EC00523",
+		"Nombre" : "Ernesto",
+		"Apellidopaterno" : "Plaza",
+		"Nombrecargo" : "Jefe de Instalaciones",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC00582",
+		"Nombre" : "Rafael ",
+		"Apellidopaterno" : "Ortiz",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC00655",
+		"Nombre" : "Pamela",
+		"Apellidopaterno" : "Vadell",
+		"Nombrecargo" : "Ingeniero calculista",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC00809",
+		"Nombre" : "Jaime ",
+		"Apellidopaterno" : "Mella",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC01139",
+		"Nombre" : "Orlando",
+		"Apellidopaterno" : "Olave",
+		"Nombrecargo" : "Seguridad",
+		"Area" : "Administracion"
+	},
+	{
+		"Legajo" : "EC01414",
+		"Nombre" : "Victor",
+		"Apellidopaterno" : "Miranda",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC01511",
+		"Nombre" : "Magdalena",
+		"Apellidopaterno" : "Aros",
+		"Nombrecargo" : "Contador",
+		"Area" : "Administracion"
+	},
+	{
+		"Legajo" : "EC01651",
+		"Nombre" : "Jonathan",
+		"Apellidopaterno" : "Martínez",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC01856",
+		"Nombre" : "Francisco",
+		"Apellidopaterno" : "Parra",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC01880",
+		"Nombre" : "Rody",
+		"Apellidopaterno" : "Barrios",
+		"Nombrecargo" : "Jefe área eléctrica",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC01910",
+		"Nombre" : "Lorenzo",
+		"Apellidopaterno" : "Ojeda",
+		"Nombrecargo" : "Ingeniero de proyectos",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC01929",
+		"Nombre" : "Paolo",
+		"Apellidopaterno" : "Viacava",
+		"Nombrecargo" : "Técnico eléctrico",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC01937",
+		"Nombre" : "Miguel",
+		"Apellidopaterno" : "Vargas",
+		"Nombrecargo" : "Dibujante",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC01945",
+		"Nombre" : "Ernesto",
+		"Apellidopaterno" : "Montesino",
+		"Nombrecargo" : "Ingeniero de proyectos",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC01961",
+		"Nombre" : "Marcela",
+		"Apellidopaterno" : "Venegas",
+		"Nombrecargo" : "Administrativo",
+		"Area" : "Administracion"
+	},
+	{
+		"Legajo" : "EC01996",
+		"Nombre" : "Alfredo",
+		"Apellidopaterno" : "Bravo",
+		"Nombrecargo" : "Ingeniero de proyectos",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02070",
+		"Nombre" : "Patricio",
+		"Apellidopaterno" : "Burgos ",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02151",
+		"Nombre" : "Nelson",
+		"Apellidopaterno" : "González",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02178",
+		"Nombre" : "Ramón",
+		"Apellidopaterno" : "Olivares",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02186",
+		"Nombre" : "Ana",
+		"Apellidopaterno" : "Buhadla",
+		"Nombrecargo" : "Experto en prevención de riesgos",
+		"Area" : "SSO"
+	},
+	{
+		"Legajo" : "EC02216",
+		"Nombre" : "Matias",
+		"Apellidopaterno" : "Campos",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02224",
+		"Nombre" : "Sebastián",
+		"Apellidopaterno" : "Campos",
+		"Nombrecargo" : "Técnico Integrador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02348",
+		"Nombre" : "Roberto",
+		"Apellidopaterno" : "Hanley",
+		"Nombrecargo" : "Ingeniero eléctrico",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02364",
+		"Nombre" : "Carlos",
+		"Apellidopaterno" : "Morales",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02372",
+		"Nombre" : "Jorge",
+		"Apellidopaterno" : "Maturana",
+		"Nombrecargo" : "Jefe de proyectos",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02380",
+		"Nombre" : "Juan",
+		"Apellidopaterno" : "Necolhueque",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02542",
+		"Nombre" : "Marcelo",
+		"Apellidopaterno" : "Zenteno",
+		"Nombrecargo" : "Técnico eléctrico",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02569",
+		"Nombre" : "Felipe",
+		"Apellidopaterno" : "Tapia ",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02577",
+		"Nombre" : "Victoria",
+		"Apellidopaterno" : "Salvo",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02593",
+		"Nombre" : "José",
+		"Apellidopaterno" : "Catalán",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02623",
+		"Nombre" : "Sebastián",
+		"Apellidopaterno" : "Fuenzalida",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02666",
+		"Nombre" : "Héctor",
+		"Apellidopaterno" : "Tobar",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02712",
+		"Nombre" : "César",
+		"Apellidopaterno" : "Salinas ",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02720",
+		"Nombre" : "Edgar",
+		"Apellidopaterno" : "Miranda",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02739",
+		"Nombre" : "Leonardo",
+		"Apellidopaterno" : "Riquelme",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02747",
+		"Nombre" : "Critian",
+		"Apellidopaterno" : "Oñate",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02763",
+		"Nombre" : "Alejandro ",
+		"Apellidopaterno" : "Leiva",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02771",
+		"Nombre" : "Sergio",
+		"Apellidopaterno" : "Leiva",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02828",
+		"Nombre" : "Giselle",
+		"Apellidopaterno" : "Sanzana",
+		"Nombrecargo" : "Ingeniero calculista",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02909",
+		"Nombre" : "Gustavo",
+		"Apellidopaterno" : "Contreras",
+		"Nombrecargo" : "Ingeniero eléctrico",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC02917",
+		"Nombre" : "Roxana",
+		"Apellidopaterno" : "Espíndola",
+		"Nombrecargo" : "Administrativo",
+		"Area" : "Administracion"
+	},
+	{
+		"Legajo" : "EC06548",
+		"Nombre" : "Cristóbal",
+		"Apellidopaterno" : "Alday",
+		"Nombrecargo" : "Ingeniero de proyectos",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC07854",
+		"Nombre" : "Gino",
+		"Apellidopaterno" : "Nobili",
+		"Nombrecargo" : "Encargado de Bodega",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC12548",
+		"Nombre" : "Jorge",
+		"Apellidopaterno" : "Soto",
+		"Nombrecargo" : "Técnico Instalador",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC85448",
+		"Nombre" : "Rene",
+		"Apellidopaterno" : "Matamala",
+		"Nombrecargo" : "Encargado de Bodega",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC85472",
+		"Nombre" : "Yinet",
+		"Apellidopaterno" : "Rodríguez",
+		"Nombrecargo" : "Ingeniero de proyectos",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC9000K",
+		"Nombre" : "María",
+		"Apellidopaterno" : "Pardilla",
+		"Nombrecargo" : "Ingeniero de proyectos",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "EC99031",
+		"Nombre" : "Jorge",
+		"Apellidopaterno" : "Olid",
+		"Nombrecargo" : "Encargado de Bodega",
+		"Area" : "Técnica"
+	},
+	{
+		"Legajo" : "SR00019",
+		"Nombre" : "Jocelyn",
+		"Apellidopaterno" : "Gómez",
+		"Nombrecargo" : "Asistente administrativa",
+		"Area" : "Administracion"
+	},
+	{
+		"Legajo" : "SR00175",
+		"Nombre" : "Giovanna",
+		"Apellidopaterno" : "Cancino",
+		"Nombrecargo" : "Administrativo aseo",
+		"Area" : "Administracion"
+	},
+	{
+		"Legajo" : "SR00302",
+		"Nombre" : "María",
+		"Apellidopaterno" : "Cruz",
+		"Nombrecargo" : "Administrativo",
+		"Area" : "Administracion"
+	}
+]
+
+
 export default employees;
