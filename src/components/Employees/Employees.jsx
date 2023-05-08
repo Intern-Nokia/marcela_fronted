@@ -5,13 +5,13 @@ import Courses, { vigencia } from "../Courses/Courses";
 import { cursosEmployee } from "../Courses/dataCourses";
 import Projects from "../Projects/Projects";
 import employees from "./data";
+import { cargoPersonal } from "./data";
+import Profiles from "../Profiles/Profiles";
 
 const { Text } = Typography;
 const { Search} = Input
 
-const randomInt = () => Math.floor(Math.random() * 10);
-
-const filterEmployes = employees.map((p) => {
+const filterEmployees = employees.map((p) => {
   return { value: p.Nombre + ' ' + p.Apellidopaterno };
 });
 
@@ -49,7 +49,13 @@ const Employees = () => {
     setIsModalOpen(false);
   };
 
-  const filterEmployee = employees.filter((e) => {
+  const employeeNames = cargoPersonal.map((e) => {
+    return {value: e.Nombre + " " + e.Apellidopaterno}
+  })
+
+  console.log(employeeNames)
+
+  const filterEmployee = cargoPersonal.filter((e) => {
     if (employee === "") {
       return e;
     }
@@ -60,7 +66,7 @@ const Employees = () => {
     <>
       <div className="search">
         <AutoComplete
-          options={filterEmployes}
+          options={employeeNames}
           filterOption={(inputValue, option) =>
             option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
           }
@@ -78,32 +84,29 @@ const Employees = () => {
         <h2>Empleados</h2>
       </Divider>
       <List
+        pagination={10}
         style={{
           maxWidth: "80%",
           margin: "auto auto",
         }}
         dataSource={filterEmployee}
-        renderItem={(item) => (
+        renderItem={(item, i) => (
           <List.Item key={item.Legajo} onClick={() => showModal(item)}>
             <List.Item.Meta
               avatar={
                 <Avatar
-                  src={"https://picsum.photos/200/300?random=" + randomInt}
+                  src={"https://picsum.photos/200/300?random=" + i}
                 />
               }
               title={item.Nombre + " " + item.Apellidopaterno}
+              description={item.Nombrecargo}
             />
             <div>
-              <h3>
-                <Text
-                  type={
-                    handleStatus(item.Legajo) === "Cumple"
-                      ? "success"
-                      : "danger"
-                  }
-                >
-                  {handleStatus(item.Legajo)}
-                </Text>
+              <h3 style={{
+                width: "100px",
+                textAlign: "left"
+              }}>
+                {item.Area}
               </h3>
             </div>
           </List.Item>
@@ -116,7 +119,8 @@ const Employees = () => {
         onCancel={handleOk}
         width={800}
       >
-        {selectedEmployee && <Courses employee={selectedEmployee} />}
+        {/* {selectedEmployee && <Courses employee={selectedEmployee} />} */}
+        {selectedEmployee && <Profiles employee={selectedEmployee}/>}
         {selectedEmployee && <Projects employee={selectedEmployee} />}
       </Modal>
     </>
