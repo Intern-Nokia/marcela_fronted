@@ -1,6 +1,7 @@
 import { Divider, List } from "antd";
 import { examenesPersonal } from "../Employees/data";
 import moment from "moment";
+import { LinkOutlined } from "@ant-design/icons"
 
 function Exams({employee}) {
 
@@ -19,8 +20,14 @@ function Exams({employee}) {
                         />
                         <div>
                             {moment(examen.fecha).format("MMMM Do YYYY") + " - " + moment(examen.fechaVencimiento).format("MMMM Do YYYY")} 
-                            
                         </div>
+                        <a href="https://africau.edu/images/default/sample.pdf"
+                         target="_blank"
+                         style={{
+                            padding: '10px'
+                         }}>
+                            <LinkOutlined />
+                        </a>
                     </List.Item>
                 )}
             />
