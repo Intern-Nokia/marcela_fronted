@@ -13,6 +13,7 @@ import { cursosEmployee } from "./dataCourses";
 import moment from "moment";
 import "../../App.css";
 import { courses } from "./dataCourses";
+import { LinkOutlined } from "@ant-design/icons"
 
 const { Text } = Typography;
 
@@ -130,17 +131,29 @@ function Courses({ employee }) {
           margin: "auto auto",
         }}
         dataSource={filterCurses}
-        renderItem={(course) => (
-          <List.Item key={course.Nombrecurso}>
+        renderItem={(course, i) => (
+          <List.Item key={i}>
             <List.Item.Meta
-              title={<a href="#">{course.Nombrecurso}</a>}
+              title={<a href="#">{course.nombre}</a>}
               description="descripción curso"
             />
-            <div>
-              <Text strong type={vigencia(course.Fechavencimiento)[0]}>
-                {vigencia(course.Fechavencimiento)[1]}
+            <div style={{
+              width: "100px"
+            }}>
+              <Text strong type={vigencia(course.fechaVencimiento)[0]}>
+                {vigencia(course.fechaVencimiento)[1]}
               </Text>
+              <p>
+                {moment(course.fechaVencimiento).format("MMMM Do YYYY")}
+              </p>
             </div>
+            <a href="https://africau.edu/images/default/sample.pdf"
+              target="_blank"
+              style={{
+                padding: '10px'
+              }}>
+              <LinkOutlined />
+            </a>
           </List.Item>
         )}
       />

@@ -120,10 +120,11 @@ const Employees = () => {
         onCancel={handleOk}
         width={800}
       >
-        {/* {selectedEmployee && <Courses employee={selectedEmployee} />} */}
         {selectedEmployee && <Profiles employee={selectedEmployee}/>}
         {/* {selectedEmployee && <Projects employee={selectedEmployee} />} */}
         {selectedEmployee && <Exams employee={selectedEmployee}/>}
+        {selectedEmployee && <Courses employee={selectedEmployee} />}
+
       </Modal>
     </>
   );
