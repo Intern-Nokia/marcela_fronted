@@ -1,6 +1,6 @@
 import { Collapse, Divider, List } from "antd";
 
-import { perfilesPersonal, eppPerfil, cursoPerfil, examenPerfil } from "./profilesData";
+import { perfilesPersonal, eppPerfil, cursoPerfil, examenPerfil, otrosRequisitos } from "./profilesData";
 
 const { Panel } = Collapse;
 
@@ -54,7 +54,7 @@ function Profiles({ employee }) {
                             <List.Item key={i}>
                                 <List.Item.Meta
                                     title={curso.nombre}
-                                    description={curso.SENCE}
+                                    description={"Codigo SENCE: " + i + curso.SENCE}
                                 />
                                 <div>
                                     {curso.organizacion}
@@ -72,6 +72,15 @@ function Profiles({ employee }) {
                             </List.Item>
                         )}
                     />
+                  </Panel>
+                  <Panel header="Otros requisitos por perfil">
+                    <List 
+                      dataSource={otrosRequisitos.filter((r) => r.Perfil === emp.Perfilasignado)}
+                      renderItem={(otro, i) => (
+                        <List.Item key={i}>
+                          <List.Item.Meta title={otro.Requisito}/>
+                        </List.Item>
+                      )}/>
                   </Panel>
                 </Collapse>
               </Panel>

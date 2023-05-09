@@ -7,6 +7,7 @@ import Projects from "../Projects/Projects";
 import employees from "./data";
 import { cargoPersonal } from "./data";
 import Profiles from "../Profiles/Profiles";
+import Exams from "../Exams/Exams";
 
 const { Text } = Typography;
 const { Search} = Input
@@ -121,7 +122,8 @@ const Employees = () => {
       >
         {/* {selectedEmployee && <Courses employee={selectedEmployee} />} */}
         {selectedEmployee && <Profiles employee={selectedEmployee}/>}
-        {selectedEmployee && <Projects employee={selectedEmployee} />}
+        {/* {selectedEmployee && <Projects employee={selectedEmployee} />} */}
+        {selectedEmployee && <Exams employee={selectedEmployee}/>}
       </Modal>
     </>
   );

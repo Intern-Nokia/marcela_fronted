@@ -2159,3 +2159,182 @@ export const examenPerfil = [
 		"perfil" : 31
 	}
 ]
+
+
+export const otrosRequisitos = [
+	{
+		"ID Requisito" : 1,
+		"Requisito" : "Certificado de antecedentes emitido por Registro Civil",
+		"Perfil" : 6
+	},
+	{
+		"ID Requisito" : 2,
+		"Requisito" : "Contrato de trabajo vigente con sueldo, jornada y vínculo con faena",
+		"Perfil" : 6
+	},
+	{
+		"ID Requisito" : 3,
+		"Requisito" : "Charla DAS",
+		"Perfil" : 6
+	},
+	{
+		"ID Requisito" : 4,
+		"Requisito" : "Recepción del RI",
+		"Perfil" : 6
+	},
+	{
+		"ID Requisito" : 5,
+		"Requisito" : "Cédula de identidad",
+		"Perfil" : 6
+	},
+	{
+		"ID Requisito" : 6,
+		"Requisito" : "Certificado de adherencia a la mutual",
+		"Perfil" : 6
+	},
+	{
+		"ID Requisito" : 7,
+		"Requisito" : "Certificado de antecedentes emitido por el Registro Civil",
+		"Perfil" : 7
+	},
+	{
+		"ID Requisito" : 8,
+		"Requisito" : "Contrato de trabajo (indefinido con anexo), vigente, con sueldo, jornada y vínculo con faena",
+		"Perfil" : 7
+	},
+	{
+		"ID Requisito" : 9,
+		"Requisito" : "Charla DAS",
+		"Perfil" : 7
+	},
+	{
+		"ID Requisito" : 10,
+		"Requisito" : "Recepción del RI",
+		"Perfil" : 7
+	},
+	{
+		"ID Requisito" : 11,
+		"Requisito" : "Cédula de identidad",
+		"Perfil" : 7
+	},
+	{
+		"ID Requisito" : 12,
+		"Requisito" : "Certificado de adherencia a la mutual",
+		"Perfil" : 7
+	},
+	{
+		"ID Requisito" : 13,
+		"Requisito" : "Certificado de antecedentes emitido por el Registro Civil",
+		"Perfil" : 8
+	},
+	{
+		"ID Requisito" : 14,
+		"Requisito" : "Contrato de trabajo (indefinido con anexo), vigente, con sueldo, jornada y vínculo con faena",
+		"Perfil" : 8
+	},
+	{
+		"ID Requisito" : 16,
+		"Requisito" : "Charla DAS",
+		"Perfil" : 8
+	},
+	{
+		"ID Requisito" : 17,
+		"Requisito" : "Recepción EPP",
+		"Perfil" : 8
+	},
+	{
+		"ID Requisito" : 18,
+		"Requisito" : "Recepción RI",
+		"Perfil" : 8
+	},
+	{
+		"ID Requisito" : 19,
+		"Requisito" : "Cédula de identidad",
+		"Perfil" : 8
+	},
+	{
+		"ID Requisito" : 20,
+		"Requisito" : "Certificado de adherencia a la Mutual",
+		"Perfil" : 8
+	},
+	{
+		"ID Requisito" : 21,
+		"Requisito" : "Contrato de trabajo",
+		"Perfil" : 28
+	},
+	{
+		"ID Requisito" : 22,
+		"Requisito" : "Anexos de contrato de trabajo",
+		"Perfil" : 28
+	},
+	{
+		"ID Requisito" : 23,
+		"Requisito" : "Fotografía tamaño carnet digitalizada",
+		"Perfil" : 28
+	},
+	{
+		"ID Requisito" : 24,
+		"Requisito" : "Consentimiento para test de alcohol y drogas",
+		"Perfil" : 28
+	},
+	{
+		"ID Requisito" : 25,
+		"Requisito" : "Fotocopia de cédula de identidad",
+		"Perfil" : 28
+	},
+	{
+		"ID Requisito" : 26,
+		"Requisito" : "Registro DAS",
+		"Perfil" : 28
+	},
+	{
+		"ID Requisito" : 27,
+		"Requisito" : "Entrega de RI",
+		"Perfil" : 28
+	},
+	{
+		"ID Requisito" : 28,
+		"Requisito" : "Contrato de trabajo",
+		"Perfil" : 29
+	},
+	{
+		"ID Requisito" : 29,
+		"Requisito" : "Anexos de contrato de trabajo",
+		"Perfil" : 29
+	},
+	{
+		"ID Requisito" : 30,
+		"Requisito" : "Fotografía tamaño carnet digitalizada",
+		"Perfil" : 29
+	},
+	{
+		"ID Requisito" : 31,
+		"Requisito" : "Consentimiento para test de alcohol y drogas",
+		"Perfil" : 29
+	},
+	{
+		"ID Requisito" : 32,
+		"Requisito" : "Fotocopia de cédula de identidad",
+		"Perfil" : 29
+	},
+	{
+		"ID Requisito" : 33,
+		"Requisito" : "Registro DAS",
+		"Perfil" : 29
+	},
+	{
+		"ID Requisito" : 34,
+		"Requisito" : "Entrega de RI",
+		"Perfil" : 29
+	},
+	{
+		"ID Requisito" : 35,
+		"Requisito" : "Fotocopia de licencia Municipal vigente",
+		"Perfil" : 29
+	},
+	{
+		"ID Requisito" : 36,
+		"Requisito" : "Hoja de vida de conductor (máximo 30 días)",
+		"Perfil" : 29
+	}
+]
