@@ -2,6 +2,7 @@ import { Divider, List } from "antd";
 import { examenesPersonal } from "../Employees/data";
 import moment from "moment";
 import { LinkOutlined } from "@ant-design/icons"
+import "./examenes.css"
 
 function Exams({employee}) {
 
@@ -14,7 +15,7 @@ function Exams({employee}) {
             </Divider>
             <List dataSource={filteredExamns}
                 renderItem={(examen, i) => (
-                    <List.Item key={i}>
+                    <List.Item key={i} className="list-examenes">
                         <List.Item.Meta
                             title={examen.nombre}
                         />
