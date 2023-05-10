@@ -28,21 +28,21 @@ function App() {
           >
             Empleados
           </Menu.Item>
-          <Menu.Item
+          {/* <Menu.Item
             onClick={() => navigate("courses")}
             className="menu-item"
             key="courses"
             icon={<BookOutlined style={{ fontSize: "32px" }} />}
           >
             Cursos
-          </Menu.Item>
+          </Menu.Item> */}
           <Menu.Item
             onClick={() => navigate("training")}
             className="menu-item"
             key="trainings"
             icon={<BulbOutlined style={{ fontSize: "32px" }} />}
           >
-            Proyectos
+            Clientes
           </Menu.Item>
         </Menu>
       </div>

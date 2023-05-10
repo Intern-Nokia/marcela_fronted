@@ -8,6 +8,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Courses from "./components/Courses/Courses";
 import Employees from "./components/Employees/Employees";
 import Projects from "./components/Projects/Projects";
+import EmployeeInfo from "./components/Employees/EmployeeInfo";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,6 +18,7 @@ root.render(
         <Route path="/employees" element={<Employees />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/training" element={<Projects />} />
+        <Route path="/infoEmployee" element={<EmployeeInfo/>}/>
       </Route>
     </Routes>
   </BrowserRouter>
