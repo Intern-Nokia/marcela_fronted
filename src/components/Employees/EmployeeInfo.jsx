@@ -1,7 +1,8 @@
 import { useLocation } from "react-router-dom"
 import Courses from "../Courses/Courses"
 import Exams from "../Exams/Exams"
-import Profiles from "../Profiles/Profiles"
+import {Clients, Profiles} from "../Profiles/Profiles"
+import { Divider } from "antd"
 
 function EmployeeInfo() {
     const location = useLocation()
@@ -9,9 +10,13 @@ function EmployeeInfo() {
 
     return (
         <>
+        <Divider orientation="center">
+            <h1>Información del empleado {employee.Trabajador}</h1>
+        </Divider>
+        <Profiles employee={employee}/>
         <Courses employee={employee}/>
         <Exams employee={employee}/>
-        <Profiles employee={employee}/>
+        <Clients employee={employee}/>
         </>
     )
 

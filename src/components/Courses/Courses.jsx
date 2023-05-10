@@ -225,6 +225,7 @@ import { courses } from "./dataCourses";
 //   );
 // }
 
+import { LinkOutlined } from "@ant-design/icons";
 import { Typography } from "antd"
 import moment from "moment";
 
@@ -263,6 +264,13 @@ function Courses({ employee }) {
             </Text>
             <p>{employee[item]}</p>
           </div>
+          <a href="https://africau.edu/images/default/sample.pdf"
+              target="_blank"
+              style={{
+                padding: '20px'
+              }}>
+              <LinkOutlined />
+            </a>
         </List.Item>
       )
     }
@@ -271,9 +279,6 @@ function Courses({ employee }) {
 
   return (
     <>
-      <Divider orientation="center">
-        <h1>Información empleado {employee.Trabajador}</h1>
-      </Divider>
       <Divider orientation="left">
         <h2>Cursos del empleado</h2>
       </Divider>
@@ -296,11 +301,8 @@ function Courses({ employee }) {
             renderItem={renderItem}/>
         </Panel>
       </Collapse>
-
     </>
   )
-
-
 }
 
 export default Courses;

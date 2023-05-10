@@ -92,20 +92,22 @@
 //   );
 // }
 
-import { Typography, List, Divider } from "antd"
+import { Typography, List, Divider, Collapse, Table, Modal } from "antd"
 import moment from "moment";
+import { useState } from "react";
 
 const { Text } = Typography
+const { Panel } = Collapse
 
-function Profiles({ employee }) {
+export function Clients({ employee }) {
 
     const profiles = [
-      "AMSA Centinela 4540005270",
-      "AMSA Centinela 4540005745",
-      "Los Bronces N° 12101041",
-      "BHP Spence",
-      "TECK Quebrada Blanca",
-      "MEL"
+        "AMSA Centinela 4540005270",
+        "AMSA Centinela 4540005745",
+        "Los Bronces N° 12101041",
+        "BHP Spence",
+        "TECK Quebrada Blanca",
+        "MEL"
     ]
 
 
@@ -128,20 +130,186 @@ function Profiles({ employee }) {
     }
 
     return (
-        <>
+        <div style={{
+            "margin-bottom": '100px'
+        }}>
             <Divider orientation="left">
                 <h2>Clientes asociados al empleado</h2>
             </Divider>
-            <List
-                style={{
-                    width: '60%',
-                    margin: 'auto auto'
-                }}
-                dataSource={profiles}
-                renderItem={renderItem}
-            />
-        </>
+            <Collapse style={{
+                width: '60%',
+                margin: 'auto auto'
+            }}>
+                <Panel header="Clientes">
+                    <List
+                        dataSource={profiles}
+                        renderItem={renderItem}
+                    />
+                </Panel>
+            </Collapse>
+        </div>
     )
 }
 
-export default Profiles;
+export function Profiles({ employee }) {
+
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const handleOk = () => setIsModalOpen(false)
+
+    const handleClick = (record) => {
+        setIsModalOpen(true)
+    }
+
+    const columns = [
+        {
+            title: 'Empleado',
+            dataIndex: 'Empleado',
+            key: 'Empleado'
+        },
+        {
+            title: 'Perfil Acreditación 1',
+            dataIndex: 'Perfil Acreditación 1',
+            key: 'Perfil Acreditación 1',
+            onCell: () => {
+                return {
+                    onClick: (record) => handleClick(record)
+                }
+            }
+        },
+        {
+            title: 'Perfil Acreditación 2',
+            dataIndex: 'Perfil Acreditación 2',
+            key: 'Perfil Acreditación 2',
+            onCell: () => {
+                return {
+                    onClick: (record) => handleClick(record)
+                }
+            }
+        },
+        {
+            title: 'Perfil Acreditación 3',
+            dataIndex: 'Perfil Acreditación 3',
+            key: 'Perfil Acreditación 3',
+            onCell: () => {
+                return {
+                    onClick: (record) => handleClick(record)
+                }
+            }
+        },
+        {
+            title: 'Perfil Acreditación 4',
+            dataIndex: 'Perfil Acreditación 4',
+            key: 'Perfil Acreditación 4',
+            onCell: () => {
+                return {
+                    onClick: (record) => handleClick(record)
+                }
+            }
+        },
+        {
+            title: 'Cliente',
+            dataIndex: 'Cliente',
+            key: 'Cliente'
+        }
+    ]
+
+    const data = [
+        {
+            Empleado: employee.Trabajador,
+            'Perfil Acreditación 1': 'Ingreso Oficina',
+            'Perfil Acreditación 2': 'Conductor Mina',
+            'Perfil Acreditación 3': 'Trabajo en altura',
+            'Perfil Acreditación 4': 'Conductor Admin',
+            Cliente: 'AMSA'
+        },
+        {
+            Empleado: employee.Trabajador,
+            'Perfil Acreditación 1': 'Ingreso Oficina',
+            'Perfil Acreditación 2': 'Conductor Mina',
+            'Perfil Acreditación 3': 'Trabajo en altura',
+            'Perfil Acreditación 4': 'Conductor Admin',
+            Cliente: 'BHP'
+        },
+        {
+            Empleado: employee.Trabajador,
+            'Perfil Acreditación 1': 'Ingreso Oficina',
+            'Perfil Acreditación 2': 'Conductor Mina',
+            'Perfil Acreditación 3': 'Trabajo en altura',
+            'Perfil Acreditación 4': 'Conductor Admin',
+            Cliente: 'MEL'
+        },
+
+    ]
+
+    const requisitosColumnas = [
+        {
+            title: 'Documentos',
+            dataIndex: 'Documento',
+            key: 'Documentos'
+        },
+        {
+            title: 'Curso Conductor Mina',
+            dataIndex: 'Curso Conductor Mina',
+            key: 'Curso Conductor Mina'
+        },
+        {
+            title: 'Curso Ingreso Mina',
+            dataIndex: 'Curso Ingreso Mina',
+            key: 'Curso Ingreso Mina'
+        },
+        {
+            title: 'Licencia',
+            dataIndex: 'Licencia',
+            key: 'Licencia'
+        }
+    ]
+
+    const dataRequisitos = [
+        {
+            Documento: 'DNI',
+            'Curso Conductor Mina': 'Curso 01 Conducción Mina (YYYY-MM-dd)',
+            'Curso Ingreso Mina': 'Curso 01 Ingreso Mina (YYYY-MM-dd)',
+            Licencia: 'Licencia especial'
+        },
+        {
+            Documento: 'Pasaporte',
+            'Curso Conductor Mina': 'Curso 02 Conducción Mina (YYYY-MM-dd)',
+            'Curso Ingreso Mina': 'Curso 02 Ingreso Mina (YYYY-MM-dd)',
+            Licencia: 'Licencia Normal'
+        },
+        {
+            Documento: 'Visa',
+            'Curso Conductor Mina': 'Curso 03 Conducción Mina (YYYY-MM-dd)',
+            'Curso Ingreso Mina': 'Curso 03 Ingreso Mina (YYYY-MM-dd)',
+            Licencia: 'Licencia ultra'
+        }
+    ]
+
+    return (
+        <>
+            <Divider orientation="left">
+                <h2>Perfiles del empleado</h2>
+            </Divider>
+            <div style={{
+                    width: '60%',
+                    margin: 'auto auto'
+                }}>
+            <Table dataSource={data}
+                columns={columns}
+                 />
+            </div>
+            <Modal
+                open={isModalOpen}
+                title={"Requisitos perfil"}
+                okText="OK"
+                onOk={handleOk}
+                onCancel={handleOk}
+                >
+                    <Table dataSource={dataRequisitos}
+                        columns={requisitosColumnas}/>
+                </Modal>
+
+        </>
+    )
+}

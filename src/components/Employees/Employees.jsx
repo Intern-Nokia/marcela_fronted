@@ -130,9 +130,12 @@
 //   );
 // };
 
-import { Divider, Table } from "antd";
+import { Divider, Table, Input, AutoComplete } from "antd";
 import employees from "./data";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+const { Search } = Input
 
 const columns = [
   {
@@ -174,6 +177,23 @@ const columns = [
 
 function Employees({ employee }) {
 
+  const [selectedEmployee, setSelectedEmployee] = useState("")
+
+  const handleSearch = (value) => {
+    setSelectedEmployee(value)
+  }
+
+  const employeeName = employees.map((emp) => {
+   return {value:  emp.Trabajador}
+  })
+
+  const filteredEmployee = employees.filter((emp) => {
+    if (selectedEmployee === ""){
+      return emp
+    }
+    return emp.Trabajador === selectedEmployee
+  })
+
   const navigate = useNavigate()
 
   return (
@@ -181,8 +201,27 @@ function Employees({ employee }) {
       <Divider orientation="left">
         <h2>Información del empleado</h2>
       </Divider>
+      <AutoComplete options={employeeName}
+      filterOption={(inputValue, option) =>
+                    option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                  }
+                  style={{
+                    display: 'flex',
+                    'justifyContent': 'center'
+                  }}>
+      <Search
+            placeholder="Buscar empleado"
+            allowClear
+            enterButton="Search"
+            size="large"
+            onSearch={handleSearch}
+            style={{
+              margin: '20px auto'
+            }}
+          />
+        </AutoComplete>
       <Table
-        dataSource={employees}
+        dataSource={filteredEmployee}
         columns={columns}
         onRow={(record, index) => {
           return {

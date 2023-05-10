@@ -36,10 +36,12 @@
 //     )
 // }
 
-import { Typography, List, Divider } from "antd"
+import { LinkOutlined } from "@ant-design/icons";
+import { Typography, List, Divider, Collapse } from "antd"
 import moment from "moment";
 
 const { Text } = Typography
+const { Panel } = Collapse
 
 function Exams({ employee }) {
 
@@ -67,6 +69,13 @@ function Exams({ employee }) {
                         </Text>
                         <p>{employee[item]}</p>
                     </div>
+                    <a href="https://africau.edu/images/default/sample.pdf"
+                        target="_blank"
+                        style={{
+                            padding: '20px'
+                        }}>
+                        <LinkOutlined />
+                    </a>
                 </List.Item>
             )
         }
@@ -78,14 +87,17 @@ function Exams({ employee }) {
             <Divider orientation="left">
                 <h2>Examenes del empleado</h2>
             </Divider>
-            <List
-                style={{
-                    width: '60%',
-                    margin: 'auto auto'
-                }}
-                dataSource={examenes}
-                renderItem={renderItem}
-            />
+            <Collapse style={{
+                width: '60%',
+                margin: 'auto auto'
+            }}>
+                <Panel header="Examenes">
+                    <List
+                        dataSource={examenes}
+                        renderItem={renderItem}
+                    />
+                </Panel>
+            </Collapse>
         </>
     )
 }
