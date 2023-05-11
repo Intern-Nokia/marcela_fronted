@@ -130,9 +130,7 @@ export function Clients({ employee }) {
     }
 
     return (
-        <div style={{
-            "margin-bottom": '100px'
-        }}>
+        <div>
             <Divider orientation="left">
                 <h2>Clientes asociados al empleado</h2>
             </Divider>
@@ -157,9 +155,16 @@ export function Profiles({ employee }) {
 
     const handleOk = () => setIsModalOpen(false)
 
-    const handleClick = (record) => {
+    const handleClick = (columnName) => {
+        console.log(columnName)
         setIsModalOpen(true)
     }
+
+    const types = [
+        "warning",
+        "success",
+        "danger"
+    ]
 
     const columns = [
         {
@@ -171,41 +176,33 @@ export function Profiles({ employee }) {
             title: 'Perfil Acreditación 1',
             dataIndex: 'Perfil Acreditación 1',
             key: 'Perfil Acreditación 1',
-            onCell: () => {
-                return {
-                    onClick: (record) => handleClick(record)
-                }
-            }
+            render: (text, record, index) => (
+                <Text onClick = {() => handleClick('Ingreso Oficina')} type={types[index % types.length]} strong>{text}</Text>
+            )
         },
         {
             title: 'Perfil Acreditación 2',
             dataIndex: 'Perfil Acreditación 2',
             key: 'Perfil Acreditación 2',
-            onCell: () => {
-                return {
-                    onClick: (record) => handleClick(record)
-                }
-            }
+            render: (text, record, index) => (
+                <Text onClick = {() => handleClick('Conductor Mina')} type={types[index % types.length + 1]} strong>{text}</Text>
+            )
         },
         {
             title: 'Perfil Acreditación 3',
             dataIndex: 'Perfil Acreditación 3',
             key: 'Perfil Acreditación 3',
-            onCell: () => {
-                return {
-                    onClick: (record) => handleClick(record)
-                }
-            }
+            render: (text, record, index) => (
+                <Text onClick = {() => handleClick('Trabajo en altura')} type={types[index % types.length + 2]} strong>{text}</Text>
+            )
         },
         {
             title: 'Perfil Acreditación 4',
             dataIndex: 'Perfil Acreditación 4',
             key: 'Perfil Acreditación 4',
-            onCell: () => {
-                return {
-                    onClick: (record) => handleClick(record)
-                }
-            }
+            render: (text, record, index) => (
+                <Text onClick ={ () => handleClick('Conductor Admin')} type={types[index % types.length]} strong>{text}</Text>
+            )
         },
         {
             title: 'Cliente',
@@ -292,12 +289,12 @@ export function Profiles({ employee }) {
                 <h2>Perfiles del empleado</h2>
             </Divider>
             <div style={{
-                    width: '60%',
-                    margin: 'auto auto'
-                }}>
-            <Table dataSource={data}
-                columns={columns}
-                 />
+                width: '60%',
+                margin: 'auto auto'
+            }}>
+                <Table dataSource={data}
+                    columns={columns}
+                />
             </div>
             <Modal
                 open={isModalOpen}
@@ -305,10 +302,10 @@ export function Profiles({ employee }) {
                 okText="OK"
                 onOk={handleOk}
                 onCancel={handleOk}
-                >
-                    <Table dataSource={dataRequisitos}
-                        columns={requisitosColumnas}/>
-                </Modal>
+            >
+                <Table dataSource={dataRequisitos}
+                    columns={requisitosColumnas} />
+            </Modal>
 
         </>
     )
