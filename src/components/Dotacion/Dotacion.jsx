@@ -78,6 +78,44 @@ export function Dotacion ({employee}) {
         },
     ]
 
+    const elementos = [
+        {
+            Elemento: "Computador",
+            Marca: "HP",
+            "No. Serie": "SN XXXX000XX",
+            "Fecha entrega": "2022-10-02"    
+        },
+        {
+            Elemento: "Celular",
+            Marca: "IPhone",
+            "No. Serie": "SN XXXX000XX",
+            "Fecha entrega": "2022-10-02"    
+        }
+    ]
+
+    const columnsElementos = [
+        {
+            title: "Elemento",
+            dataIndex: "Elemento",
+            key: "Elemento"
+        },
+        {
+            title: "Marca",
+            dataIndex: "Marca",
+            key: "Marca"
+        },
+        {
+            title: "No. Serie",
+            dataIndex: "No. Serie",
+            key: "No. Serie"
+        },
+        {
+            title: "Fecha entrega",
+            dataIndex: "Fecha entrega",
+            key: "Fecha entrega"
+        }
+    ]
+
     return (
         <>
         <Divider orientation="left">
@@ -88,7 +126,14 @@ export function Dotacion ({employee}) {
             margin: 'auto auto'
         }}>
             <Panel header="Dotacion y elementos">
-                <Table dataSource={data}columns={columns}/>
+                <Collapse accordion>
+                <Panel header="Detalle EPP">
+                    <Table dataSource={data}columns={columns}/>
+                </Panel>
+                <Panel header="Elementos">
+                    <Table dataSource={elementos} columns={columnsElementos}/>
+                </Panel>
+                </Collapse>
             </Panel>
         </Collapse>
         </>
