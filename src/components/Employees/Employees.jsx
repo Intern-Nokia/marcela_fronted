@@ -231,12 +231,17 @@ function Employees() {
     setDataEmployees(newData)
   }
 
+  const handleEmpresa = () => navigate('/empresas')
+
   const columns = [
     {
       title: 'Empresa',
       dataIndex: 'Empresa',
       key: 'Empresa',
-      editable: true
+      editable: true,
+      render: (text, record, index) => (
+        <Button type="link" onClick={handleEmpresa}>{text}</Button>
+      )
     },
     {
       title: 'Trabajador',

@@ -95,6 +95,7 @@
 import { Typography, List, Divider, Collapse, Table, Modal } from "antd"
 import moment from "moment";
 import { useState } from "react";
+import "./profiles.css"
 
 const { Text } = Typography
 const { Panel } = Collapse
@@ -288,6 +289,15 @@ export function Profiles({ employee }) {
             <Divider orientation="left">
                 <h2>Perfiles del empleado</h2>
             </Divider>
+            <div className="leyendas">
+                <div className="leyenda-item" style={{backgroundColor: "#73d13d"}}></div>
+                <span>Cumple requisitos</span>
+                <div className="leyenda-item" style={{backgroundColor: "#ffec3d"}}></div>
+                <span>Documentación o cursos pendientes</span>
+                <div className="leyenda-item" style={{backgroundColor: "#ff4d4f"}}></div>
+                <span>No cumple requisitos</span>
+
+            </div>
             <div style={{
                 width: '60%',
                 margin: 'auto auto'
