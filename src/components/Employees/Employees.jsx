@@ -130,7 +130,7 @@
 //   );
 // };
 
-import { Divider, Table, Input, AutoComplete, Form, Popconfirm, Button } from "antd";
+import { Divider, Table, Input, AutoComplete, Form, Popconfirm, Button, Typography, Tag } from "antd";
 import employees from "./data";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -138,6 +138,7 @@ import React, { useContext, useEffect, useRef } from "react";
 import "./employees.css"
 
 const { Search } = Input
+const { Text } = Typography
 const EditableContext = React.createContext(null)
 
 const EditableRow = ({ index, ...props }) => {
@@ -164,7 +165,7 @@ const EditableCell = ({
   const inputRef = useRef(null)
   const form = useContext(EditableContext)
   useEffect(() => {
-    if (editing){
+    if (editing) {
       inputRef.current.focus()
     }
   }, [editing])
@@ -200,8 +201,8 @@ const EditableCell = ({
             message: `${title} requerido`,
           }
         ]}>
-          <Input ref={inputRef} onPressEnter={save} onBlur={save}/>
-        </Form.Item>
+        <Input ref={inputRef} onPressEnter={save} onBlur={save} />
+      </Form.Item>
     ) : (
       <div
         className="editable-cell-value-wrap"
@@ -209,8 +210,8 @@ const EditableCell = ({
           paddingRight: 24
         }}
         onClick={toogleEdit}
-        >
-          {children}
+      >
+        {children}
       </div>
     )
   }
@@ -224,8 +225,6 @@ function Employees() {
 
   const [dataEmployees, setDataEmployees] = useState(employees)
 
-  const [count, setCount] = useState(2)
-
   const handleDelete = (trabajador) => {
     const newData = dataEmployees.filter((item) => item.Trabajador !== trabajador)
     setDataEmployees(newData)
@@ -235,65 +234,83 @@ function Employees() {
 
   const columns = [
     {
-      title: 'Empresa',
-      dataIndex: 'Empresa',
-      key: 'Empresa',
-      editable: true,
-      render: (text, record, index) => (
-        <Button type="link" onClick={handleEmpresa}>{text}</Button>
-      )
-    },
-    {
       title: 'Trabajador',
       dataIndex: 'Trabajador',
       key: 'Trabajador',
-      editable: true
+      render: (text, record) => (
+        <a onClick={() => navigate('/infoEmployee', { state: { employee: record } })}><Text strong style={{ color: '#1677ff' }}>{text}</Text></a>
+      )
     },
     {
-      title: 'Cargo',
-      dataIndex: 'Cargo',
-      key: 'Cargo',
-      editable:  true
+      title: 'RUT',
+      dataIndex: 'CI',
+      key: 'RUT',
     },
     {
-      title: 'Fecha Nacimiento',
-      dataIndex: 'Fecha Nacimiento',
-      key: 'Fecha Nacimiento',
-      editable: true
+      title: 'AMSA: Proyecto operación',
+      dataIndex: 'AMSA Centinela 4540005270',
+      key: 'AMSA: Proyecto operación',
+      render: (text) => (
+        text === 'OK' ? (
+           <Tag color="green">{text}</Tag>
+
+        ) : (
+          <Tag color="red">{text}</Tag>
+        )
+      )
     },
     {
-      title: 'Correo electrónico',
-      dataIndex: 'Correo electrónico',
-      key: 'Correo electrónico',
-      editable: true
+      title: 'AMSA: Proyecto operación técnico',
+      dataIndex: 'AMSA Centinela 4540005745',
+      key: 'AMSA: Proyecto operación técnico',
+      render: (text) => (
+        text === 'OK' ? (
+           <Tag color="green">{text}</Tag>
+
+        ) : (
+          <Tag color="red">{text}</Tag>
+        )
+      )
     },
     {
-      title: 'Número de teléfono',
-      dataIndex: 'Número de teléfono',
-      key: 'Número de teléfono',
-      editable: true
+      title: 'AMSA: Proyecto operación conducción',
+      dataIndex: 'Los Bronces N° 12101041',
+      key: 'AMSA: Proyecto operación conducción',
+      render: (text) => (
+        text === 'OK' ? (
+           <Tag color="green">{text}</Tag>
+
+        ) : (
+          <Tag color="red">{text}</Tag>
+        )
+      )
     },
     {
-      title: 'Inicio de Contrato',
-      dataIndex: 'Inicio de Contrato',
-      key: 'Inicio de Contrato',
-      editable: true
+      title: 'AMSA: Proyecto operación conducción mina',
+      dataIndex: 'BHP Spence',
+      key: 'AMSA: Proyecto operación conducción mina',
+      render: (text) => (
+        text === 'OK' ? (
+           <Tag color="green">{text}</Tag>
+
+        ) : (
+          <Tag color="red">{text}</Tag>
+        )
+      )
     },
     {
-      title: 'Acción',
-      dataIndex: 'accion',
-      render: (_, record) =>
-        dataEmployees.length >= 1 ? (
-          <>
-          <Popconfirm title="Seguro que desea eliminar el registro?" onConfirm={() => handleDelete(record.Trabajador)}>
-            <a>Eliminar</a>
-          </Popconfirm>
-          <div>
-          <a onClick={() => navigate('/infoEmployee', { state: { employee: record } })}>Ir al empleado</a>
-          </div>
-          </>
-        ) : null
-    }
+      title: 'AMSA: Proyecto operación tabajo en altura',
+      dataIndex: 'TECK Quebrada Blanca',
+      key: 'AMSA: Proyecto operación tabajo en altura',
+      render: (text) => (
+        text === 'OK' ? (
+           <Tag color="green">{text}</Tag>
+
+        ) : (
+          <Tag color="red">{text}</Tag>
+        )
+      )
+    },
   ]
 
   const handleAdd = () => {
@@ -380,7 +397,7 @@ function Employees() {
     }
   }
   const defaultColumns = columns.map((col) => {
-    if(!col.editable){
+    if (!col.editable) {
       return col
     }
     return {
@@ -399,8 +416,8 @@ function Employees() {
 
   const handleSearch = (value) => {
     const filteredEmployee = employees.filter((emp) => {
-      if (value === ""){
-        return emp  
+      if (value === "") {
+        return emp
       }
       return emp.Trabajador === value
     })
@@ -444,13 +461,13 @@ function Employees() {
         rowClassName={() => 'editable-row'}
         dataSource={dataEmployees}
         columns={defaultColumns}
-        // onRow={(record, index) => {
-        //   return {
-        //     onClick: e => {
-        //       navigate('/infoEmployee', { state: { employee: record } })
-        //     }
-        //   }
-        // }}
+      // onRow={(record, index) => {
+      //   return {
+      //     onClick: e => {
+      //       navigate('/infoEmployee', { state: { employee: record } })
+      //     }
+      //   }
+      // }}
       />
     </>
   )
