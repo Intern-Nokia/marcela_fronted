@@ -20,7 +20,7 @@
 //                             title={examen.nombre}
 //                         />
 //                         <div>
-//                             {moment(examen.fecha).format("MMMM Do YYYY") + " - " + moment(examen.fechaVencimiento).format("MMMM Do YYYY")} 
+//                             {moment(examen.fecha).format("MMMM Do YYYY") + " - " + moment(examen.fechaVencimiento).format("MMMM Do YYYY")}
 //                         </div>
 //                         <a href="https://africau.edu/images/default/sample.pdf"
 //                          target="_blank"
@@ -37,69 +37,51 @@
 // }
 
 import { LinkOutlined } from "@ant-design/icons";
-import { Typography, List, Divider, Collapse } from "antd"
+import { Typography, List, Divider, Collapse, Table } from "antd";
+import axios from "axios";
 import moment from "moment";
+import { useEffect, useState } from "react";
 
-const { Text } = Typography
-const { Panel } = Collapse
+const { Text } = Typography;
+const { Panel } = Collapse;
 
 function Exams({ employee }) {
+  const [examenes, setExamenes] = useState([]);
 
-    const examenes = [
-        "Exámen altura geográfica vencimiento",
-        "Vencimiento Examen Altura Física",
-        "Fecha realización Examen Sílice (vigencia 1 año)",
-        "Fecha realización Examen Ruido (vigencia 1 año)",
-        "Altura Geográfica para CENTINELA",
-        "Drogas realización",
-        "Psicosensometrico vencimiento"
-    ]
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/examenes")
+      .then((res) => setExamenes(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
+  const columns = [
+    {
+      title: "Nombre del Exámen",
+      dataIndex: "nombre",
+    },
+    {
+      title: "Institución",
+      dataIndex: "institucion",
+    },
+    {
+      title: "Vigencia",
+      dataIndex: "vigencia",
+    },
+    {
+      title: "Costo",
+      dataIndex: "costo",
+    },
+  ];
 
-    const renderItem = (item) => {
-        const isExam = employee[item] !== ""
-
-        if (isExam) {
-            return (
-                <List.Item>
-                    <List.Item.Meta title={item} />
-                    <div>
-                        <Text strong type={moment(employee[item]).isBefore(moment()) ? "danger" : "success"}>
-                            {moment(employee[item]).isBefore(moment(new Date)) ? "Vencido" : "Vigente"}
-                        </Text>
-                        <p>{employee[item]}</p>
-                    </div>
-                    <a href="https://africau.edu/images/default/sample.pdf"
-                        target="_blank"
-                        style={{
-                            padding: '20px'
-                        }}>
-                        <LinkOutlined />
-                    </a>
-                </List.Item>
-            )
-        }
-
-    }
-
-    return (
-        <>
-            <Divider orientation="left">
-                <h2>Examenes del empleado</h2>
-            </Divider>
-            <Collapse style={{
-                width: '60%',
-                margin: 'auto auto'
-            }}>
-                <Panel header="Examenes">
-                    <List
-                        dataSource={examenes}
-                        renderItem={renderItem}
-                    />
-                </Panel>
-            </Collapse>
-        </>
-    )
+  return (
+    <>
+      <Divider orientation="left">
+        <h2>Examenes Medicos</h2>
+      </Divider>
+      <Table dataSource={examenes} columns={columns} />
+    </>
+  );
 }
 
-export default Exams
+export default Exams;

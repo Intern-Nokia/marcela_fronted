@@ -1402,762 +1402,254 @@ export const eppPerfil = [
 
 
 export const cursoPerfil = [
-	{
-		"nombre" : "Uso y manejo de extintores",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 31,
-		"curso" : 2
-	},
-	{
-		"nombre" : "Uso y manejo de extintores",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 3,
-		"curso" : 2
-	},
-	{
-		"nombre" : "Uso y manejo de extintores",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 15,
-		"curso" : 2
-	},
-	{
-		"nombre" : "Uso y manejo de extintores",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 14,
-		"curso" : 2
-	},
-	{
-		"nombre" : "Uso y manejo de extintores",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 19,
-		"curso" : 2
-	},
-	{
-		"nombre" : "Uso y manejo de extintores",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 18,
-		"curso" : 2
-	},
-	{
-		"nombre" : "Uso y manejo de extintores",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 9,
-		"curso" : 2
-	},
-	{
-		"nombre" : "Uso y manejo de extintores",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 13,
-		"curso" : 2
-	},
-	{
-		"nombre" : "Uso y manejo de extintores",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 12,
-		"curso" : 2
-	},
-	{
-		"nombre" : "Uso y manejo de extintores",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 11,
-		"curso" : 2
-	},
-	{
-		"nombre" : "Uso y manejo de extintores",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 10,
-		"curso" : 2
-	},
-	{
-		"nombre" : "Uso y manejo de extintores",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 4,
-		"curso" : 2
-	},
-	{
-		"nombre" : "Uso y manejo de extintores",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 2,
-		"curso" : 2
-	},
-	{
-		"nombre" : "Uso y manejo de extintores",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 1,
-		"curso" : 2
-	},
-	{
-		"nombre" : "Conducción 4x4",
-		"organizacion" : "Sercade",
-		"SENCE" : "",
-		"perfil" : 16,
-		"curso" : 5
-	},
-	{
-		"nombre" : "Conducción 4x4",
-		"organizacion" : "Sercade",
-		"SENCE" : "",
-		"perfil" : 13,
-		"curso" : 5
-	},
-	{
-		"nombre" : "Conducción 4x4",
-		"organizacion" : "Sercade",
-		"SENCE" : "",
-		"perfil" : 2,
-		"curso" : 5
-	},
-	{
-		"nombre" : "Conducción 4x4",
-		"organizacion" : "Sercade",
-		"SENCE" : "",
-		"perfil" : 5,
-		"curso" : 5
-	},
-	{
-		"nombre" : "Trabajo en altura y protección de caídas",
-		"organizacion" : "TOK",
-		"SENCE" : "",
-		"perfil" : 14,
-		"curso" : 7
-	},
-	{
-		"nombre" : "Trabajo en altura y protección de caídas",
-		"organizacion" : "TOK",
-		"SENCE" : "",
-		"perfil" : 10,
-		"curso" : 7
-	},
-	{
-		"nombre" : "Trabajo en altura y protección de caídas",
-		"organizacion" : "TOK",
-		"SENCE" : "",
-		"perfil" : 4,
-		"curso" : 7
-	},
-	{
-		"nombre" : "Charla SAI Entel",
-		"organizacion" : "ENTEL",
-		"SENCE" : "N/A",
-		"perfil" : 3,
-		"curso" : 8
-	},
-	{
-		"nombre" : "Charla SAI Entel",
-		"organizacion" : "ENTEL",
-		"SENCE" : "N/A",
-		"perfil" : 2,
-		"curso" : 8
-	},
-	{
-		"nombre" : "Charla SAI Entel",
-		"organizacion" : "ENTEL",
-		"SENCE" : "N/A",
-		"perfil" : 1,
-		"curso" : 8
-	},
-	{
-		"nombre" : "Charla SAI Entel",
-		"organizacion" : "ENTEL",
-		"SENCE" : "N/A",
-		"perfil" : 4,
-		"curso" : 8
-	},
-	{
-		"nombre" : "Curso Inducción minera Mantos Blancos",
-		"organizacion" : "Mantos Blancos",
-		"SENCE" : "",
-		"perfil" : 7,
-		"curso" : 9
-	},
-	{
-		"nombre" : "Curso Inducción minera Mantos Blancos",
-		"organizacion" : "Mantos Blancos",
-		"SENCE" : "",
-		"perfil" : 6,
-		"curso" : 9
-	},
-	{
-		"nombre" : "Toma de conocimiento ingreso seguro",
-		"organizacion" : "Mantos Blancos",
-		"SENCE" : "",
-		"perfil" : 7,
-		"curso" : 10
-	},
-	{
-		"nombre" : "Toma de conocimiento ingreso seguro",
-		"organizacion" : "Mantos Blancos",
-		"SENCE" : "",
-		"perfil" : 6,
-		"curso" : 10
-	},
-	{
-		"nombre" : "Conducción a la defensiva",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 16,
-		"curso" : 11
-	},
-	{
-		"nombre" : "Conducción a la defensiva",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 18,
-		"curso" : 11
-	},
-	{
-		"nombre" : "Conducción a la defensiva",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 13,
-		"curso" : 11
-	},
-	{
-		"nombre" : "Primeros auxilios",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 31,
-		"curso" : 12
-	},
-	{
-		"nombre" : "Primeros auxilios",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 15,
-		"curso" : 12
-	},
-	{
-		"nombre" : "Primeros auxilios",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 14,
-		"curso" : 12
-	},
-	{
-		"nombre" : "Primeros auxilios",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 19,
-		"curso" : 12
-	},
-	{
-		"nombre" : "Primeros auxilios",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 18,
-		"curso" : 12
-	},
-	{
-		"nombre" : "Primeros auxilios",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 13,
-		"curso" : 12
-	},
-	{
-		"nombre" : "Primeros auxilios",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 12,
-		"curso" : 12
-	},
-	{
-		"nombre" : "Primeros auxilios",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 10,
-		"curso" : 12
-	},
-	{
-		"nombre" : "Primeros auxilios",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 11,
-		"curso" : 12
-	},
-	{
-		"nombre" : "Orientación en prevención de riesgos",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 31,
-		"curso" : 13
-	},
-	{
-		"nombre" : "Orientación en prevención de riesgos",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 15,
-		"curso" : 13
-	},
-	{
-		"nombre" : "Orientación en prevención de riesgos",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 14,
-		"curso" : 13
-	},
-	{
-		"nombre" : "Orientación en prevención de riesgos",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 19,
-		"curso" : 13
-	},
-	{
-		"nombre" : "Orientación en prevención de riesgos",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 18,
-		"curso" : 13
-	},
-	{
-		"nombre" : "Orientación en prevención de riesgos",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 13,
-		"curso" : 13
-	},
-	{
-		"nombre" : "Orientación en prevención de riesgos",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 12,
-		"curso" : 13
-	},
-	{
-		"nombre" : "Orientación en prevención de riesgos",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 11,
-		"curso" : 13
-	},
-	{
-		"nombre" : "Orientación en prevención de riesgos",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 10,
-		"curso" : 13
-	},
-	{
-		"nombre" : "Conducción en faena",
-		"organizacion" : "Mantos Blancos",
-		"SENCE" : "",
-		"perfil" : 7,
-		"curso" : 14
-	},
-	{
-		"nombre" : "Curso de inducción BHP Billiton",
-		"organizacion" : "BHP Billiton",
-		"SENCE" : "",
-		"perfil" : 8,
-		"curso" : 15
-	},
-	{
-		"nombre" : "Manejo manual de cargas",
-		"organizacion" : "Mutual",
-		"SENCE" : "",
-		"perfil" : 19,
-		"curso" : 20
-	},
-	{
-		"nombre" : "NSN - Antenna line Installation (ANT_LN_INST)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 27,
-		"curso" : 22
-	},
-	{
-		"nombre" : "NSN - Antenna line Installation (ANT_LN_INST)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 25,
-		"curso" : 22
-	},
-	{
-		"nombre" : "NSN - Antenna line Installation (ANT_LN_INST)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 26,
-		"curso" : 22
-	},
-	{
-		"nombre" : "NSN - Antenna line Installation (ANT_LN_INST)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 24,
-		"curso" : 22
-	},
-	{
-		"nombre" : "NSN - Antenna line C&I (ANT_LN_C&I)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 27,
-		"curso" : 23
-	},
-	{
-		"nombre" : "NSN - Antenna line C&I (ANT_LN_C&I)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 25,
-		"curso" : 23
-	},
-	{
-		"nombre" : "NSN - Flexi MR installation (FLX_MR_ED_INS)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 27,
-		"curso" : 24
-	},
-	{
-		"nombre" : "NSN - Flexi MR installation (FLX_MR_ED_INS)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 26,
-		"curso" : 24
-	},
-	{
-		"nombre" : "NSN - Flexi MR C&I (FLX_MR_ED_C&I)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 27,
-		"curso" : 25
-	},
-	{
-		"nombre" : "NSN - Flexi 3G Installation (FLX_3G_INST)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 25,
-		"curso" : 26
-	},
-	{
-		"nombre" : "NSN - Flexi 3G Installation (FLX_3G_INST)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 24,
-		"curso" : 26
-	},
-	{
-		"nombre" : "NSN - Flexi 3G C&I (FLX_3G_C&I)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 25,
-		"curso" : 27
-	},
-	{
-		"nombre" : "NSN - FPRA Power Installation (FPRA_PWR_INST)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 27,
-		"curso" : 28
-	},
-	{
-		"nombre" : "NSN - FPRA Power Installation (FPRA_PWR_INST)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 25,
-		"curso" : 28
-	},
-	{
-		"nombre" : "NSN - FPRA Power Installation (FPRA_PWR_INST)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 26,
-		"curso" : 28
-	},
-	{
-		"nombre" : "NSN - FPRA Power Installation (FPRA_PWR_INST)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 24,
-		"curso" : 28
-	},
-	{
-		"nombre" : "NSN - FPRA Power C&I (FPRA_PWR_C&I)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 27,
-		"curso" : 29
-	},
-	{
-		"nombre" : "NSN - FPRA Power C&I (FPRA_PWR_C&I)",
-		"organizacion" : "NSN",
-		"SENCE" : "N/A",
-		"perfil" : 25,
-		"curso" : 29
-	},
-	{
-		"nombre" : "Capacitación de inducción Hombre nuevo (Antucoya)",
-		"organizacion" : "Antucoya",
-		"SENCE" : "N/A",
-		"perfil" : 29,
-		"curso" : 32
-	},
-	{
-		"nombre" : "Capacitación de inducción Hombre nuevo (Antucoya)",
-		"organizacion" : "Antucoya",
-		"SENCE" : "N/A",
-		"perfil" : 28,
-		"curso" : 32
-	},
-	{
-		"nombre" : "Capacitación de reglamento de tránsito (Antucoya)",
-		"organizacion" : "Antucoya",
-		"SENCE" : "N/A",
-		"perfil" : 29,
-		"curso" : 33
-	}
+    {
+        "Requisito": "Inducción Hombre Nuevo Centinela",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "ODI Centila",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "Curso COVID Centinela",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "Diploma de Curso de reglamento de tránsito de vehículos y peatones.",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "EDC Introduccion a las estrategias de control",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "EDC Operación de vehiculos livianos",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "EDC Interaccion con energia electrica",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "EDC Trabajos en altura",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "EDC Fatiga y somnolencia",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "EDC Operaciones de Izaje",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "MANT Interventores/as en Aislamiento y Bloqueo de Energías Peligrosa",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "TRANSV Condiciones Climáticas Adversas",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "TRANSV Reglamento Tránsito de Vehículos y Peatones & Manejo a la Defensiva y Conductas Críticas",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "TRANSV Trabajo en Altura",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "EDC Geotecnia",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "AULA ODI Autonomía",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "AULA Reglamento de Aislación y Bloqueo para Equipos Móviles",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "AULA Sistema de Alerta de Colisión CAS10",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "AULA ODI Mina General",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "TRANSV Prevención de la Silicosis",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "TRANSV RECSS",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "EDC Prevención de la Silicosis",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "TRANSV ART 360",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "TRANSV Reglamento Respuesta Emergencias",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "AULA Inducción Seguridad y Salud Ocupacional (Persona Nueva)",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "TRANSV Método de Clasificación e Investigación de Accidentes",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "Curso capacitacion herramientas preventivas MCEN",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "TRANSV Primeros Auxilios",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    },
+    {
+        "Requisito": "TRANSV Uso de Extintores",
+        "Institucion": "x",
+        "Online/Presencial": "x",
+        "Vigencia": "x",
+        "Costo": "x"
+    }
 ]
 
 export const examenPerfil = [
-	{
-		"nombre" : "Trabajo en altura geográfica",
-		"obsevaciones" : "",
-		"perfil" : 3
-	},
-	{
-		"nombre" : "Trabajo en altura física",
-		"obsevaciones" : "",
-		"perfil" : 5
-	},
-	{
-		"nombre" : "Trabajo en altura geográfica",
-		"obsevaciones" : "",
-		"perfil" : 5
-	},
-	{
-		"nombre" : "Psicosensotécnico",
-		"obsevaciones" : "",
-		"perfil" : 5
-	},
-	{
-		"nombre" : "Trabajo en altura geográfica",
-		"obsevaciones" : "",
-		"perfil" : 1
-	},
-	{
-		"nombre" : "Trabajo en altura física",
-		"obsevaciones" : "",
-		"perfil" : 2
-	},
-	{
-		"nombre" : "Trabajo en altura geográfica",
-		"obsevaciones" : "",
-		"perfil" : 2
-	},
-	{
-		"nombre" : "Trabajo en altura física",
-		"obsevaciones" : "",
-		"perfil" : 4
-	},
-	{
-		"nombre" : "Trabajo en altura geográfica",
-		"obsevaciones" : "",
-		"perfil" : 4
-	},
-	{
-		"nombre" : "Preocupacional mineras",
-		"obsevaciones" : "Exámen clínico gral, Rx Tórax, Audiometría, Espirometría, Perfil lipídico, orina completa/sedimento, glicemia, optometría.",
-		"perfil" : 6
-	},
-	{
-		"nombre" : "Alcohol y drogas",
-		"obsevaciones" : "marihuana, cocaína, anfetaminas y benzodiacepina",
-		"perfil" : 6
-	},
-	{
-		"nombre" : "Examen psicológico de aversión al riesgo",
-		"obsevaciones" : "",
-		"perfil" : 6
-	},
-	{
-		"nombre" : "Alcohol y drogas",
-		"obsevaciones" : "marihuana, cocaína, anfetaminas y benzodiacepina",
-		"perfil" : 7
-	},
-	{
-		"nombre" : "Examen psicológico de aversión al riesgo",
-		"obsevaciones" : "",
-		"perfil" : 7
-	},
-	{
-		"nombre" : "Preocupacional mineras",
-		"obsevaciones" : "Exámen clínico gral, Rx Tórax, Audiometría, Espirometría, Perfil lipídico, orina completa/sedimento, glicemia, optometría.",
-		"perfil" : 7
-	},
-	{
-		"nombre" : "Psicosensotécnico",
-		"obsevaciones" : "",
-		"perfil" : 7
-	},
-	{
-		"nombre" : "Preocupacional mineras",
-		"obsevaciones" : "Exámen clínico gral, Rx Tórax, Audiometría, Espirometría, Perfil lipídico, orina completa/sedimento, glicemia, optometría.",
-		"perfil" : 8
-	},
-	{
-		"nombre" : "Ocupacional",
-		"obsevaciones" : "Exámen clínico gral, Rx Tórax, Audiometría, Creatina, perfil lipídico, electrocardiograma, glicemia, optometría, hemoglobina, indice framingham.",
-		"perfil" : 9
-	},
-	{
-		"nombre" : "Ocupacional",
-		"obsevaciones" : "Exámen clínico gral, Rx Tórax, Audiometría, Creatina, perfil lipídico, electrocardiograma, glicemia, optometría, hemoglobina, indice framingham.",
-		"perfil" : 10
-	},
-	{
-		"nombre" : "Trabajo en altura física",
-		"obsevaciones" : "",
-		"perfil" : 10
-	},
-	{
-		"nombre" : "Trabajo en altura geográfica",
-		"obsevaciones" : "",
-		"perfil" : 10
-	},
-	{
-		"nombre" : "Ocupacional",
-		"obsevaciones" : "Exámen clínico gral, Rx Tórax, Audiometría, Creatina, perfil lipídico, electrocardiograma, glicemia, optometría, hemoglobina, indice framingham.",
-		"perfil" : 11
-	},
-	{
-		"nombre" : "Ocupacional",
-		"obsevaciones" : "Exámen clínico gral, Rx Tórax, Audiometría, Creatina, perfil lipídico, electrocardiograma, glicemia, optometría, hemoglobina, indice framingham.",
-		"perfil" : 12
-	},
-	{
-		"nombre" : "Ocupacional",
-		"obsevaciones" : "Exámen clínico gral, Rx Tórax, Audiometría, Creatina, perfil lipídico, electrocardiograma, glicemia, optometría, hemoglobina, indice framingham.",
-		"perfil" : 13
-	},
-	{
-		"nombre" : "Psicosensotécnico",
-		"obsevaciones" : "",
-		"perfil" : 13
-	},
-	{
-		"nombre" : "Trabajo en altura geográfica",
-		"obsevaciones" : "",
-		"perfil" : 11
-	},
-	{
-		"nombre" : "Ocupacional",
-		"obsevaciones" : "Exámen clínico gral, Rx Tórax, Audiometría, Creatina, perfil lipídico, electrocardiograma, glicemia, optometría, hemoglobina, indice framingham.",
-		"perfil" : 18
-	},
-	{
-		"nombre" : "Trabajo en altura física",
-		"obsevaciones" : "",
-		"perfil" : 18
-	},
-	{
-		"nombre" : "Trabajo en altura geográfica",
-		"obsevaciones" : "",
-		"perfil" : 18
-	},
-	{
-		"nombre" : "Psicosensotécnico",
-		"obsevaciones" : "",
-		"perfil" : 18
-	},
-	{
-		"nombre" : "Ocupacional",
-		"obsevaciones" : "Exámen clínico gral, Rx Tórax, Audiometría, Creatina, perfil lipídico, electrocardiograma, glicemia, optometría, hemoglobina, indice framingham.",
-		"perfil" : 19
-	},
-	{
-		"nombre" : "Trabajo en altura física",
-		"obsevaciones" : "",
-		"perfil" : 19
-	},
-	{
-		"nombre" : "Trabajo en altura geográfica",
-		"obsevaciones" : "",
-		"perfil" : 19
-	},
-	{
-		"nombre" : "Trabajo en altura física",
-		"obsevaciones" : "",
-		"perfil" : 14
-	},
-	{
-		"nombre" : "Trabajo en altura geográfica",
-		"obsevaciones" : "",
-		"perfil" : 14
-	},
-	{
-		"nombre" : "Trabajo en altura geográfica",
-		"obsevaciones" : "",
-		"perfil" : 15
-	},
-	{
-		"nombre" : "Ocupacional",
-		"obsevaciones" : "Exámen clínico gral, Rx Tórax, Audiometría, Creatina, perfil lipídico, electrocardiograma, glicemia, optometría, hemoglobina, indice framingham.",
-		"perfil" : 16
-	},
-	{
-		"nombre" : "Psicosensotécnico",
-		"obsevaciones" : "",
-		"perfil" : 16
-	},
-	{
-		"nombre" : "Ocupacional",
-		"obsevaciones" : "Exámen clínico gral, Rx Tórax, Audiometría, Creatina, perfil lipídico, electrocardiograma, glicemia, optometría, hemoglobina, indice framingham.",
-		"perfil" : 23
-	},
-	{
-		"nombre" : "Ocupacional",
-		"obsevaciones" : "Exámen clínico gral, Rx Tórax, Audiometría, Creatina, perfil lipídico, electrocardiograma, glicemia, optometría, hemoglobina, indice framingham.",
-		"perfil" : 28
-	},
-	{
-		"nombre" : "Trabajo en altura geográfica",
-		"obsevaciones" : "",
-		"perfil" : 28
-	},
-	{
-		"nombre" : "Trabajo en altura física",
-		"obsevaciones" : "",
-		"perfil" : 28
-	},
-	{
-		"nombre" : "Ocupacional",
-		"obsevaciones" : "Exámen clínico gral, Rx Tórax, Audiometría, Creatina, perfil lipídico, electrocardiograma, glicemia, optometría, hemoglobina, indice framingham.",
-		"perfil" : 29
-	},
-	{
-		"nombre" : "Trabajo en altura geográfica",
-		"obsevaciones" : "",
-		"perfil" : 29
-	},
-	{
-		"nombre" : "Trabajo en altura física",
-		"obsevaciones" : "",
-		"perfil" : 29
-	},
-	{
-		"nombre" : "Psicosensotécnico",
-		"obsevaciones" : "",
-		"perfil" : 29
-	},
-	{
-		"nombre" : "Ocupacional",
-		"obsevaciones" : "Exámen clínico gral, Rx Tórax, Audiometría, Creatina, perfil lipídico, electrocardiograma, glicemia, optometría, hemoglobina, indice framingham.",
-		"perfil" : 31
-	}
+    {
+        "Requisito": "Certificado de Salud",
+        "Institucion": "Institución A",
+        "Online/Presencial": "online",
+        "Vigencia": "1 año",
+        "Costo": "1000"
+    },
+    {
+        "Requisito": "Altura geografica",
+        "Institucion": "Institución B",
+        "Online/Presencial": "presencial",
+        "Vigencia": "2 años",
+        "Costo": "2000"
+    },
+    {
+        "Requisito": "Alcohol y drogas",
+        "Institucion": "Institución C",
+        "Online/Presencial": "online",
+        "Vigencia": "3 años",
+        "Costo": "3000"
+    },
+    {
+        "Requisito": "Altura física",
+        "Institucion": "Institución D",
+        "Online/Presencial": "presencial",
+        "Vigencia": "4 años",
+        "Costo": "4000"
+    },
+    {
+        "Requisito": "Octavo par",
+        "Institucion": "Institución E",
+        "Online/Presencial": "online",
+        "Vigencia": "5 años",
+        "Costo": "5000"
+    },
+    {
+        "Requisito": "Psicosensotecnico",
+        "Institucion": "Institucion F",
+        "Online/Presencial": "presencial",
+        "Vigencia": "6 años",
+        "Costo": "6000"
+    }
 ]
 
 
