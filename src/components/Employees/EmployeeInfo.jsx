@@ -47,6 +47,8 @@ function DataEmployee() {
 
   const [formDisabled, setFormDisabled] = useState(false);
 
+  employee.fechaNacimiento = dayjs(employee.fechaNacimiento, "M/D/YYYY");
+
   return (
     <div style={{ width: "90%", margin: "auto" }}>
       <Switch
@@ -171,11 +173,8 @@ function DataEmployee() {
         </Row>
         <Row>
           <Col span={12}>
-            <Form.Item label="Fecha de Nacimiento">
-              <DatePicker
-                defaultValue={dayjs(employee.fechaNacimiento, "M/D/YYYY")}
-                format="YYYY/MM/DD"
-              />
+            <Form.Item name="fechaNacimiento" label="Fecha de Nacimiento">
+              <DatePicker />
             </Form.Item>
           </Col>
           <Col span={6}>
