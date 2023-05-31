@@ -7,6 +7,7 @@ import {
   Form,
   Input,
   Modal,
+  Select,
   Table,
   Tag,
   Typography,
@@ -375,9 +376,6 @@ function Employees() {
           >
             <Input />
           </Form.Item>
-          <Form.Item name="habilitadoBHP">
-            <Checkbox>Habilitado BHP LMS?</Checkbox>
-          </Form.Item>
           <Form.Item label="Nacionalidad" name="nacionalidad">
             <Input />
           </Form.Item>
@@ -447,8 +445,23 @@ function Employees() {
           <Form.Item label="Ciudad" name="ciudad">
             <Input />
           </Form.Item>
-          <Form.Item label="Estado Civil" name="estadoCivil">
-            <Input />
+          <Form.Item name="estadoCivil" label="Estado Civil">
+            <Select
+              options={[
+                {
+                  value: "Soltero",
+                },
+                {
+                  value: "Casado",
+                },
+                {
+                  value: "Viudo",
+                },
+                {
+                  value: "Union Libre",
+                },
+              ]}
+            ></Select>
           </Form.Item>
         </Form>
       </Modal>
