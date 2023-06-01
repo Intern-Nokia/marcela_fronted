@@ -2,7 +2,7 @@ import { Divider, Table } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function Courses({ employee }) {
+function Courses() {
   const [cursos, setCursos] = useState([]);
 
   useEffect(() => {

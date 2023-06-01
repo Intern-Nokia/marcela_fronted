@@ -19,6 +19,8 @@ import { CursosUsuario } from "../Courses/CursosUsuario";
 import { useState } from "react";
 import "./employees.css";
 import dayjs from "dayjs";
+import { DotacionUsuario } from "../Dotacion/DotacionUsuario";
+import { OtrosUsuario } from "../Otros/OtrosUsuario";
 
 function EmployeeInfo() {
   const location = useLocation();
@@ -32,6 +34,8 @@ function EmployeeInfo() {
 
       <DataEmployee />
       <CursosUsuario employee={employee} />
+      <DotacionUsuario employee={employee} />
+      <OtrosUsuario employee={employee} />
       {/* <Profiles employee={employee}/> */}
       {/* <Courses employee={employee} />
       <Exams employee={employee} />
