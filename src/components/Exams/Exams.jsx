@@ -1,86 +1,161 @@
-// import { Divider, List } from "antd";
-// import { examenesPersonal } from "../Employees/data";
-// import moment from "moment";
-// import { LinkOutlined } from "@ant-design/icons"
-// import "./examenes.css"
-
-// function Exams({employee}) {
-
-//     const filteredExamns = examenesPersonal.filter((e) => e.Legajo === employee.Legajo)
-
-//     return (
-//         <>
-//             <Divider orientation="left">
-//                 <h2>Examenes del empleado</h2>
-//             </Divider>
-//             <List dataSource={filteredExamns}
-//                 renderItem={(examen, i) => (
-//                     <List.Item key={i} className="list-examenes">
-//                         <List.Item.Meta
-//                             title={examen.nombre}
-//                         />
-//                         <div>
-//                             {moment(examen.fecha).format("MMMM Do YYYY") + " - " + moment(examen.fechaVencimiento).format("MMMM Do YYYY")}
-//                         </div>
-//                         <a href="https://africau.edu/images/default/sample.pdf"
-//                          target="_blank"
-//                          style={{
-//                             padding: '10px'
-//                          }}>
-//                             <LinkOutlined />
-//                         </a>
-//                     </List.Item>
-//                 )}
-//             />
-//         </>
-//     )
-// }
-
-import { LinkOutlined } from "@ant-design/icons";
-import { Typography, List, Divider, Collapse, Table } from "antd";
-import axios from "axios";
-import moment from "moment";
+import {
+  Divider,
+  Table,
+  Button,
+  Modal,
+  Form,
+  Input,
+  InputNumber,
+  message,
+} from "antd";
+import { useForm } from "antd/es/form/Form";
 import { useEffect, useState } from "react";
+import { examenes, nuevoExamen } from "../Requests/ExamenesRequests";
+import { PlusCircleOutlined } from "@ant-design/icons";
+import GetColumnsSearchProps from "../GetColumnsSearchProps";
 
-const { Text } = Typography;
-const { Panel } = Collapse;
+export function Exams() {
+  const [dataExamenes, setDataExamenes] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [form] = useForm();
 
-function Exams({ employee }) {
-  const [examenes, setExamenes] = useState([]);
+  const handleCreate = async (values) => {
+    try {
+      values.institucion = values.institucion.toUpperCase();
+      const status = await nuevoExamen(values);
+      if (status === 201) {
+        message.success("Examen creado satisfactoriamente");
+        getExamenes();
+      } else {
+        message.error("No se ha podido crear el examen.");
+      }
+    } catch (err) {
+      message.error(`No se ha podido crear el examen. Error: ${err}`);
+    }
+    setOpen(false);
+  };
+
+  const getExamenes = async () => {
+    try {
+      const result = await examenes();
+      setDataExamenes(result);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/examenes")
-      .then((res) => setExamenes(res.data))
-      .catch((err) => console.log(err));
+    getExamenes();
   }, []);
 
   const columns = [
     {
-      title: "Nombre del Exámen",
+      title: "Nombre del curso",
       dataIndex: "nombre",
+      key: "nombre_examen",
+      ...GetColumnsSearchProps("nombre"),
     },
     {
       title: "Institución",
       dataIndex: "institucion",
+      key: "institucion_examen",
+      ...GetColumnsSearchProps("institucion"),
     },
     {
       title: "Vigencia",
       dataIndex: "vigencia",
+      key: "vigencia_examen",
+      render: (text) => <>{text} meses</>,
     },
     {
       title: "Costo",
       dataIndex: "costo",
+      key: "costo_examen",
+      render: (text) => <>${text}</>,
     },
   ];
 
   return (
-    <>
+    <div>
       <Divider orientation="left">
-        <h2>Examenes Medicos</h2>
+        <h2>Examenes</h2>
       </Divider>
-      <Table dataSource={examenes} columns={columns} />
-    </>
+      <Button
+        type="primary"
+        size="large"
+        icon={<PlusCircleOutlined />}
+        style={{ marginBottom: 25, fontSize: 20, height: "auto" }}
+        onClick={() => setOpen(true)}
+      >
+        Crear Examen
+      </Button>
+      <Table dataSource={dataExamenes} columns={columns} />
+      <Modal
+        title={"Crear un Examen"}
+        open={open}
+        onOk={() => {
+          form.validateFields().then((values) => {
+            form.resetFields();
+            handleCreate(values);
+          });
+        }}
+        onCancel={() => {
+          form.resetFields();
+          setOpen(false);
+        }}
+      >
+        <Form form={form} layout="vertical">
+          <Form.Item
+            label="Nombre del examen"
+            name="nombre"
+            rules={[
+              {
+                required: true,
+                message: "Por favor seleccione el curso",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Institución"
+            name="institucion"
+            rules={[
+              {
+                required: true,
+                message: "Por favor ingrese la institución",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Vigencia (meses)"
+            name="vigencia"
+            rules={[
+              {
+                required: true,
+                type: "number",
+              },
+            ]}
+          >
+            <InputNumber min={0} />
+          </Form.Item>
+          <Form.Item
+            label="Costo"
+            name="costo"
+            rules={[
+              {
+                required: true,
+                type: "number",
+              },
+            ]}
+          >
+            <InputNumber min={0} />
+          </Form.Item>
+        </Form>
+      </Modal>
+    </div>
   );
 }
 

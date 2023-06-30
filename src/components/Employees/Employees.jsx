@@ -1,7 +1,6 @@
+import { UserAddOutlined } from "@ant-design/icons";
 import {
-  AutoComplete,
   Button,
-  Checkbox,
   DatePicker,
   Divider,
   Form,
@@ -13,121 +12,314 @@ import {
   Typography,
   message,
 } from "antd";
-import {
-  DeleteTwoTone,
-  UserAddOutlined,
-  UserDeleteOutlined,
-} from "@ant-design/icons";
 import axios from "axios";
+import dayjs from "dayjs";
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import employees from "./data";
-import "./employees.css";
+import GetColumnsSearchProps from "../GetColumnsSearchProps";
 
-const { Search } = Input;
+const lodash = require("lodash");
 const { Text } = Typography;
 
 function Employees() {
   /* Hooks */
-  const navigate = useNavigate();
-  const [form] = Form.useForm();
+
   const [modalTitle, setModalTitle] = useState("");
   const [selectedEmployee, setSelectedEmployee] = useState(null);
-  const [messageApi, contextHolder] = message.useMessage();
   const [dataEmployees, setDataEmployees] = useState([]);
-  const [employeeName, setEmployeeName] = useState([]);
+  const [cumplimientoCursos, setCumplimientoCursos] = useState([]);
+  const [cursosRequisito, setCursosRequisito] = useState([]);
+  const [cumplimientoExamenes, setCumplimientoExamenes] = useState([]);
+  const [examenesRequisitos, setExamenesRequisitos] = useState([]);
+  const [cumplimientoDotacion, setCumplimientoDotacion] = useState([]);
+  const [dotacionRequisitos, setDotacionRequisitos] = useState([]);
+  const [cumplimientoOtros, setCumplimientoOtros] = useState([]);
+  const [otrosRequisitos, setOtrosRequisitos] = useState([]);
+  const [perfiles, setPerfiles] = useState([]);
+
+  const [form] = Form.useForm();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/personal/")
+      .get("http://localhost:5000/perfil")
+      .then((res) => setPerfiles(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const options = perfiles.map((perfil) => {
+    return {
+      label: perfil.nombre_perfil,
+      value: perfil.id_perfil,
+    };
+  });
+
+  //LISTA OTROS REQUISITOS POR PERFIL
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/perfil/otros")
+      .then((res) => setOtrosRequisitos(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  //LISTA OTROS REQUISITOS CUMPLIDOS POR PERSONA
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/personal/otros")
+      .then((res) => setCumplimientoOtros(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  //LISTA DE DOTACION REQUERIDA POR PERFIL
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/perfil/dotacion")
+      .then((res) => setDotacionRequisitos(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  //LISTA DOTACION POR PERSONA
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/personal/dotacion")
+      .then((res) => setCumplimientoDotacion(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  //LISTA DE EXAMENES REQUERIDOS POR PERFIL
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/perfil/examenes")
+      .then((res) => setExamenesRequisitos(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  //LISTA DE EXAMENES CUMPLIDOS POR PERSONA
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/personal/examenes")
+      .then((res) => setCumplimientoExamenes(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  //LISTA DE CURSOS REQUERIDOS POR PERFIL
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/perfil/cursos")
+      .then((res) => setCursosRequisito(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  //LISTA DE CURSOS CUMPLIDOS POR PERSONA
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/personal/cursos")
+      .then((res) => setCumplimientoCursos(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  //LISTA DE LAS PERSONAS CON SUS PERFILES TABLA PRINCIPAL
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/perfil/personas")
       .then((res) => {
         setDataEmployees(res.data);
-        setEmployeeName(
-          res.data.map((emp) => {
-            return { value: emp.trabajador };
-          })
-        );
       })
       .catch((err) => console.error("Error: ", err));
   }, []);
 
+  //MANEJO DE MODAL PARA CREACION DE PERSONAS
   const onFinishFailed = (errorInfo) => {
-    messageApi.open({
-      type: "error",
-      content:
-        "Error al enviar el formulario. Verifique que todos los campos obligatorios esten diligenciados.",
-    });
+    message.error(
+      "Error al enviar el formulario. Verifique que todos los campos obligatorios esten diligenciados."
+    );
   };
 
   const handleCreate = (values) => {
     setSelectedEmployee({});
+    const { perfiles } = values;
+    values.fecha_nacimiento = moment(values.fecha_nacimiento).format(
+      "YYYY/MM/DD"
+    );
+    delete values["perfiles"];
     axios
       .post("http://localhost:5000/personal/", values)
       .then(() => {
-        messageApi.open({
-          type: "success",
-          content: "Trabajador agregado exitosamente",
-        });
-        updateEmployees();
+        message.success("Trabajador agregado exitosamente");
         setIsModalOpen(false);
       })
       .catch((err) => {
         console.log("Error ", err);
-        messageApi.open({
-          type: "error",
-          content: "No se pudo agregar el trabajador. Error: " + { err },
-        });
+        message.error("No se pudo agregar el trabajador. Error: " + { err });
       });
+
+    for (let i = 0; i < perfiles.length; i++) {
+      let data = {
+        perfil: perfiles[i],
+        persona: values.CI,
+      };
+      axios
+        .post("http://localhost:5000/perfil/personas", data)
+        .then(() => console.log("Perfil agregado"))
+        .catch((err) => console.log(err));
+    }
+    updateEmployees();
     form.resetFields();
   };
 
-  const handleDelete = (rut) => {
-    axios
-      .patch("http://localhost:5000/personal/" + rut)
-      .then(() => {
-        messageApi.open({
-          type: "success",
-          content: "Usuario eliminado exitosamente",
-        });
-        updateEmployees();
-      })
-      .catch((err) => {
-        messageApi.open({
-          type: "error",
-          content: "Error al eliminar usuario, intente nuevamente",
-        });
-      });
-  };
+  // const handleDelete = (rut) => {
+  //   axios
+  //     .patch("http://localhost:5000/personal/" + rut)
+  //     .then(() => {
+  //       message.success("Usuario eliminado exitosamente");
+  //       updateEmployees();
+  //     })
+  //     .catch((err) => {
+  //       message.error(
+  //         "Error al eliminar usuario, intente nuevamente. Error: " + { err }
+  //       );
+  //     });
+  // };
 
   const updateEmployees = () => {
     axios
-      .get("http://localhost:5000/personal/")
+      .get("http://localhost:5000/perfil/personas")
       .then((res) => {
         setDataEmployees(res.data);
-        setEmployeeName(
-          res.data.map((emp) => {
-            return { value: emp.trabajador };
-          })
-        );
       })
       .catch((err) => console.error("Error", err));
   };
 
-  const handleSearch = (value) => {
-    const filteredEmployee = dataEmployees.filter((emp) => {
-      if (value === "") {
-        updateEmployees();
-      }
-      return emp.trabajador === value;
-    });
-    setDataEmployees(filteredEmployee);
-  };
+  const handleStatus = (record) => {
+    const cursosUser = cumplimientoCursos.filter(
+      (curso) => curso.CI === record.CI
+    );
 
-  const handleEdit = (employee) => {
-    console.log(employee);
-    setModalTitle("Editar trabajador");
-    setSelectedEmployee(employee);
-    setIsModalOpen(true);
+    const cursosPerfil = cursosRequisito.filter(
+      (perfil) => perfil.id_perfil === record.id_perfil
+    );
+
+    const examenesUser = cumplimientoExamenes.filter(
+      (examen) => examen.CI === record.CI
+    );
+
+    const examenesPerfil = examenesRequisitos.filter(
+      (examen) => examen.id_perfil === record.id_perfil
+    );
+
+    const dotacionUser = cumplimientoDotacion.filter(
+      (dotacion) => dotacion.CI === record.CI
+    );
+
+    const dotacionPerfil = dotacionRequisitos.filter(
+      (dotacion) => dotacion.id_perfil === record.id_perfil
+    );
+
+    const otrosUser = cumplimientoOtros.filter((otro) => otro.CI === record.CI);
+
+    const otrosPerfil = otrosRequisitos.filter(
+      (otro) => otro.id_perfil === record.id_perfil
+    );
+
+    const cumpleCursos = [];
+    const cursosRequeridos = [];
+    const cumpleExamenes = [];
+    const examenesRequeridos = [];
+    const cumpleDotacion = [];
+    const dotacionRequeridos = [];
+    const cumpleOtros = [];
+    const otrosRequeridos = [];
+
+    const now = moment();
+    const inAMonth = moment().add(1, "M");
+
+    cursosUser.forEach((curso) => {
+      if (now.isBefore(curso.fecha_vencimiento_curso)) {
+        cumpleCursos.push(curso.id_curso);
+      }
+    });
+    cursosPerfil.forEach((curso) => cursosRequeridos.push(curso.id_curso));
+
+    examenesUser.forEach((examen) => {
+      if (now.isBefore(examen.fecha_vencimiento_examen)) {
+        cumpleExamenes.push(examen.id_examen);
+      }
+    });
+    examenesPerfil.forEach((examen) =>
+      examenesRequeridos.push(examen.id_examen)
+    );
+
+    dotacionUser.forEach((dotacion) => {
+      if (now.isBefore(dotacion.fecha_vencimiento_dotacion)) {
+        cumpleDotacion.push(dotacion.id_dotacion);
+      }
+    });
+    dotacionPerfil.forEach((dotacion) =>
+      dotacionRequeridos.push(dotacion.id_dotacion)
+    );
+
+    otrosUser.forEach((otro) => {
+      if (now.isBefore(otro.fecha_vencimiento_otro)) {
+        cumpleOtros.push(otro.id_otro);
+      }
+    });
+    otrosPerfil.forEach((otro) => otrosRequeridos.push(otro.id_otro));
+
+    //NO CUMPLE UN REQUISITO
+    if (
+      lodash.difference(cursosRequeridos, cumpleCursos).length > 0 ||
+      lodash.difference(examenesRequeridos, cumpleExamenes).length > 0 ||
+      lodash.difference(dotacionRequeridos, cumpleDotacion).length > 0 ||
+      lodash.difference(otrosRequeridos, cumpleOtros).length > 0
+    ) {
+      return "NOK";
+    }
+
+    //CUMPLE CON TODOS LOS REQUISITOS PERO ESTA CERCA A VENCIMIENTO
+    for (let i = 0; i < cumpleCursos.length; i++) {
+      let cursoInfo = cursosUser.filter((c) => c.id_curso === cumpleCursos[i]);
+      if (
+        moment(cursoInfo[0].fecha_vencimiento_curso).isBetween(now, inAMonth)
+      ) {
+        return "PENDIENTE";
+      }
+    }
+
+    for (let i = 0; i < cumpleExamenes.length; i++) {
+      let examenInfo = examenesUser.filter(
+        (c) => c.id_examen === cumpleExamenes[i]
+      );
+      if (
+        moment(examenInfo[0].fecha_vencimiento_examen).isBetween(now, inAMonth)
+      ) {
+        return "PENDIENTE";
+      }
+    }
+
+    for (let i = 0; i < cumpleDotacion.length; i++) {
+      let dotacionInfo = dotacionUser.filter(
+        (c) => c.id_dotacion === cumpleDotacion[i]
+      );
+      if (
+        moment(dotacionInfo[0].fecha_vencimiento_dotacion).isBetween(
+          now,
+          inAMonth
+        )
+      ) {
+        return "PENDIENTE";
+      }
+    }
+
+    for (let i = 0; i < cumpleOtros.length; i++) {
+      let otroInfo = otrosUser.filter((c) => c.id_otro === cumpleOtros[i]);
+      if (moment(otroInfo[0].fecha_vencimiento_otro).isBetween(now, inAMonth)) {
+        return "PENDIENTE";
+      }
+    }
+
+    //CUMPLE CON TODOS LOS REQUISITOS
+    return "OK";
   };
 
   const columns = [
@@ -136,154 +328,69 @@ function Employees() {
       dataIndex: "trabajador",
       key: "Trabajador",
       render: (text, record) => (
-        <a
-          onClick={() =>
-            navigate("/infoEmployee", { state: { employee: record } })
-          }
+        <Button
+          type="link"
+          onClick={() => {
+            navigate("/infoEmployee", { state: { employee: record } });
+          }}
         >
           <Text strong style={{ color: "#1677ff" }}>
             {text}
           </Text>
-        </a>
+        </Button>
       ),
+      ...GetColumnsSearchProps("trabajador"),
     },
     {
-      title: "RUT",
+      title: "Identificación",
       dataIndex: "CI",
       key: "RUT",
+      ...GetColumnsSearchProps("CI"),
     },
     {
-      title: "AMSA: Proyecto operación",
-      dataIndex: "AMSA Centinela 4540005270",
-      key: "AMSA: Proyecto operación",
-      onHeaderCell: (col) => ({
-        onClick: () => {
-          navigate("/profile", {
-            state: col.title,
-          });
-        },
-      }),
-      render: (text) =>
-        text === "OK" ? (
-          <Tag color="green">{text}</Tag>
-        ) : (
-          <Tag color="red">{text}</Tag>
-        ),
+      title: "Cliente",
+      dataIndex: "cliente",
+      key: "cliente",
+      ...GetColumnsSearchProps("cliente"),
     },
     {
-      title: "AMSA: Proyecto operación técnico",
-      dataIndex: "AMSA Centinela 4540005745",
-      key: "AMSA: Proyecto operación técnico",
-      render: (text) =>
-        text === "OK" ? (
-          <Tag color="green">{text}</Tag>
-        ) : (
-          <Tag color="red">{text}</Tag>
-        ),
-      onHeaderCell: (col) => ({
-        onClick: () => {
-          navigate("/profile", {
-            state: col.title,
-          });
-        },
-      }),
+      title: "Perfil",
+      dataIndex: "nombre_perfil",
+      key: "nombre_perfil",
+      ...GetColumnsSearchProps("nombre_perfil"),
     },
     {
-      title: "AMSA: Proyecto operación conducción",
-      dataIndex: "Los Bronces N° 12101041",
-      key: "AMSA: Proyecto operación conducción",
-      render: (text) =>
-        text === "OK" ? (
-          <Tag color="green">{text}</Tag>
-        ) : (
-          <Tag color="red">{text}</Tag>
-        ),
-      onHeaderCell: (col) => ({
-        onClick: () => {
-          navigate("/profile", {
-            state: col.title,
-          });
-        },
-      }),
-    },
-    {
-      title: "AMSA: Proyecto operación conducción mina",
-      dataIndex: "BHP Spence",
-      key: "AMSA: Proyecto operación conducción mina",
-      render: (text) =>
-        text === "OK" ? (
-          <Tag color="green">{text}</Tag>
-        ) : (
-          <Tag color="red">{text}</Tag>
-        ),
-      onHeaderCell: (col) => ({
-        onClick: () => {
-          navigate("/profile", {
-            state: col.title,
-          });
-        },
-      }),
-    },
-    {
-      title: "AMSA: Proyecto operación tabajo en altura",
-      dataIndex: "TECK Quebrada Blanca",
-      key: "AMSA: Proyecto operación tabajo en altura",
-      render: (text) =>
-        text === "OK" ? (
-          <Tag color="green">{text}</Tag>
-        ) : (
-          <Tag color="red">{text}</Tag>
-        ),
-      onHeaderCell: (col) => ({
-        onClick: () => {
-          navigate("/profile", {
-            state: col.title,
-          });
-        },
-      }),
-    },
-    {
-      title: "Acción",
-      render: (_, record) => (
-        <>
-          {contextHolder}
-          <Button type="link" onClick={() => handleDelete(record.CI)}>
-            <UserDeleteOutlined style={{ margin: 0, fontSize: "1.8rem" }} />
-            <p style={{ margin: 0 }}>Eliminar</p>
-          </Button>
-        </>
-      ),
+      title: "Estado",
+      key: "status",
+      onCell: (record) => {
+        return {
+          onClick: () =>
+            navigate("profile", {
+              state: { employee: record },
+            }),
+        };
+      },
+      render: (_, record) => {
+        let status = handleStatus(record);
+        console.log(status);
+        if (status === "OK") {
+          return <Tag color="green">OK</Tag>;
+        }
+        if (status === "NOK") {
+          return <Tag color="red">NOK</Tag>;
+        }
+        return <Tag color="yellow">PROXIMO A VENCER</Tag>;
+      },
     },
   ];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <>
+    <div>
       <Divider orientation="left">
         <h2>Información del empleado</h2>
       </Divider>
-      <AutoComplete
-        options={employeeName}
-        filterOption={(inputValue, option) =>
-          option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-        }
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Search
-          placeholder="Buscar empleado"
-          allowClear
-          enterButton="Search"
-          size="large"
-          onSearch={handleSearch}
-          style={{
-            margin: "20px auto",
-          }}
-        />
-      </AutoComplete>
 
       <Button
         type="primary"
@@ -294,15 +401,16 @@ function Employees() {
           textAlign: "center",
           height: "auto",
         }}
+        icon={<UserAddOutlined />}
         onClick={() => {
           setModalTitle("Agregar trabajador");
           setIsModalOpen(true);
         }}
       >
-        <UserAddOutlined style={{ margin: 0 }} /> Agregar trabajador
+        Agregar trabajador
       </Button>
 
-      <Table dataSource={dataEmployees} columns={columns} on />
+      <Table dataSource={dataEmployees} columns={columns} />
 
       <Modal
         title={modalTitle}
@@ -329,7 +437,30 @@ function Employees() {
           autoComplete="off"
         >
           <Form.Item
-            label="RUT"
+            label="Tipo de identificación"
+            name="tipo_identificacion"
+            rules={[
+              {
+                required: true,
+                message: "Por favor seleccione el tipo de identificación",
+              },
+            ]}
+          >
+            <Select
+              options={[
+                {
+                  value: "RUT",
+                  label: "RUT",
+                },
+                {
+                  value: "PASAPORTE",
+                  label: "PASAPORTE",
+                },
+              ]}
+            />
+          </Form.Item>
+          <Form.Item
+            label="No. de Identificación"
             name="CI"
             rules={[
               {
@@ -346,7 +477,7 @@ function Employees() {
             rules={[
               {
                 required: true,
-                message: "Por favor ingrese la Empresa del tranajador",
+                message: "Por favor ingrese la Empresa del trabajador",
               },
             ]}
           >
@@ -381,6 +512,7 @@ function Employees() {
           </Form.Item>
           <Form.Item
             label="Fecha de Nacimiento"
+            name="fecha_nacimiento"
             rules={[
               {
                 required: true,
@@ -389,7 +521,11 @@ function Employees() {
               },
             ]}
           >
-            <DatePicker />
+            <DatePicker
+              disabledDate={(current) =>
+                current && current > dayjs().endOf("day")
+              }
+            />
           </Form.Item>
           <Form.Item
             label="Correo Electrónico"
@@ -402,29 +538,24 @@ function Employees() {
           >
             <Input />
           </Form.Item>
+          <Form.Item label="Número de teléfono" name="telefono">
+            <Input />
+          </Form.Item>
           <Form.Item
-            label="Número de teléfono"
-            name="telefono"
-            rules={[
-              {
-                type: "number",
-              },
-            ]}
+            label="Fecha de vencimiento de CI"
+            name="fecha_vencimiento_CI"
           >
-            <Input />
-          </Form.Item>
-          <Form.Item label="Fecha de vencimiento de CI">
             <DatePicker />
           </Form.Item>
-          <Form.Item label="Vigencia Visa">
+          <Form.Item label="Vigencia Visa" name="vigencia_visa">
             <DatePicker />
           </Form.Item>
-          <Form.Item label="Proyecto Actual" name="proyectoActual">
+          {/* <Form.Item label="Proyecto Actual" name="proyectoActual">
             <Input />
-          </Form.Item>
+          </Form.Item> */}
           <Form.Item
             label="Correo Personal"
-            name="correoPersonal"
+            name="correo_personal"
             rules={[
               {
                 type: "email",
@@ -433,7 +564,7 @@ function Employees() {
           >
             <Input />
           </Form.Item>
-          <Form.Item label="Inicio de Contrato">
+          <Form.Item label="Inicio de Contrato" name="inicio_contrato">
             <DatePicker />
           </Form.Item>
           <Form.Item label="Dirección" name="direccion">
@@ -445,7 +576,7 @@ function Employees() {
           <Form.Item label="Ciudad" name="ciudad">
             <Input />
           </Form.Item>
-          <Form.Item name="estadoCivil" label="Estado Civil">
+          <Form.Item name="estado_civil" label="Estado Civil">
             <Select
               options={[
                 {
@@ -463,9 +594,12 @@ function Employees() {
               ]}
             ></Select>
           </Form.Item>
+          <Form.Item name="perfiles" label="Perfiles del trabajador">
+            <Select mode="multiple" allowClear options={options} />
+          </Form.Item>
         </Form>
       </Modal>
-    </>
+    </div>
   );
 }
 

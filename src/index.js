@@ -7,10 +7,13 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import Courses from "./components/Courses/Courses";
 import Employees from "./components/Employees/Employees";
-import Projects from "./components/Projects/Projects";
 import EmployeeInfo from "./components/Employees/EmployeeInfo";
-import { Empresa } from "./components/Empresa/Empresa";
 import { Profiles } from "./components/Profiles/Profiles";
+import { EmployeeProfile } from "./components/Employees/EmployeeProfile";
+import { RequisitosPerfil } from "./components/Profiles/RequisitosPerfil";
+import Exams from "./components/Exams/Exams";
+import { Dotacion } from "./components/Dotacion/Dotacion";
+import { Otros } from "./components/Otros/Otros";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,11 +21,17 @@ root.render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="/employees" element={<Employees />} />
-        <Route path="/courses" element={<Courses />} />
-        <Route path="/training" element={<Projects />} />
-        <Route path="/infoEmployee" element={<EmployeeInfo/>}/>
-        <Route path="/empresas" element={<Empresa/>}/>
-        <Route path="/profile" element={<Profiles/>}/>
+        <Route path="/examenes" element={<Exams />} />
+        <Route path="/dotacion" element={<Dotacion />} />
+        <Route path="/cursos" element={<Courses />} />
+        <Route path="/otros-requisitos" element={<Otros />} />
+        <Route path="/infoEmployee" element={<EmployeeInfo />} />
+        <Route path="/perfiles" element={<Profiles />} />
+        <Route
+          path="/perfiles/requisitos-perfil"
+          element={<RequisitosPerfil />}
+        />
+        <Route path="/employees/profile" element={<EmployeeProfile />} />
       </Route>
     </Routes>
   </BrowserRouter>

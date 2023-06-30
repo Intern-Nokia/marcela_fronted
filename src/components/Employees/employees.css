@@ -1,10 +1,4 @@
-a {
-    display: block;
-    padding: 0.5rem;
-}
-
-
-input[type="checkbox"] {
-    margin: 0;
-    width: fit-content;
+input:disabled {
+    color: #000;
+    font-weight: 700;
 }

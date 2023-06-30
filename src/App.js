@@ -1,20 +1,17 @@
-import { BookOutlined, BulbOutlined, UserOutlined } from "@ant-design/icons";
-import { AutoComplete, Input, Menu } from "antd";
-import { useState } from "react";
+import {
+  BookOutlined,
+  BulbOutlined,
+  UserOutlined,
+  ToolOutlined,
+} from "@ant-design/icons";
+import { Input, Menu } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
 import "./App.css";
-import Employees from "./components/Employees/Employees";
-import employees from "./components/Employees/data";
 
 const { Search } = Input;
 
-
-
 function App() {
   const navigate = useNavigate();
-
-
-  
 
   return (
     <>
@@ -29,27 +26,50 @@ function App() {
             Empleados
           </Menu.Item>
           <Menu.Item
-            onClick={() => navigate("empresas")}
+            onClick={() => navigate("/cursos")}
             className="menu-item"
-            key="empresas"
+            key="cursos"
             icon={<BookOutlined style={{ fontSize: "32px" }} />}
           >
-            Empresas
+            Cursos
           </Menu.Item>
           <Menu.Item
-            onClick={() => navigate("training")}
+            onClick={() => navigate("/perfiles")}
             className="menu-item"
-            key="trainings"
+            key="perfiles"
             icon={<BulbOutlined style={{ fontSize: "32px" }} />}
           >
-            Clientes
+            Perfiles
+          </Menu.Item>
+          <Menu.Item
+            onClick={() => navigate("/examenes")}
+            className="menu-item"
+            key="examenes"
+          >
+            Exámenes
+          </Menu.Item>
+          <Menu.Item
+            onClick={() => navigate("/dotacion")}
+            className="menu-item"
+            icon={<ToolOutlined style={{ fontSize: 32 }} />}
+            key="dotacion"
+          >
+            Dotación
+          </Menu.Item>
+          <Menu.Item
+            onClick={() => navigate("/otros-requisitos")}
+            className="menu-item"
+            // icon={<ToolOutlined style={{fontSize: 32}} />}
+            key="otros"
+          >
+            Otros Requisitos
           </Menu.Item>
         </Menu>
       </div>
-      <div>
+      <div style={{ width: "80%", margin: "auto" }}>
         <Outlet></Outlet>
       </div>
-      
+
       {/* <Employees employee={employee}/> */}
       {/* {viewProjects && employee && <Projects searchEmployee={employee} />} */}
       {/* {viewCourse && employee && <Courses user={employee}/>} */}
