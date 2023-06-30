@@ -277,29 +277,40 @@ function Employees() {
     }
 
     //CUMPLE CON TODOS LOS REQUISITOS PERO ESTA CERCA A VENCIMIENTO
-    for (let i = 0; i < cumpleCursos.length; i++) {
-      let cursoInfo = cursosUser.filter((c) => c.id_curso === cumpleCursos[i]);
+    for (let i = 0; i < cursosRequeridos.length; i++) {
+      let cursoInfo = cursosUser.filter(
+        (c) => c.id_curso === cursosRequeridos[i]
+      );
       if (
         moment(cursoInfo[0].fecha_vencimiento_curso).isBetween(now, inAMonth)
       ) {
+        console.log("Yo cursos envio el pendiente");
         return "PENDIENTE";
       }
     }
 
-    for (let i = 0; i < cumpleExamenes.length; i++) {
+    if (record.CI === "12345678-9") {
+      console.log("ExamenUser", examenesUser);
+      console.log("examenesRequeridos", examenesRequeridos);
+      console.log("CumpleExamenes", cumpleExamenes);
+    }
+
+    for (let i = 0; i < examenesRequeridos.length; i++) {
       let examenInfo = examenesUser.filter(
-        (c) => c.id_examen === cumpleExamenes[i]
+        (c) => c.id_examen === examenesRequeridos[i]
       );
       if (
         moment(examenInfo[0].fecha_vencimiento_examen).isBetween(now, inAMonth)
       ) {
+        console.log("Yo examenes envio el pendiente");
+
         return "PENDIENTE";
       }
     }
 
-    for (let i = 0; i < cumpleDotacion.length; i++) {
+    for (let i = 0; i < dotacionRequeridos.length; i++) {
       let dotacionInfo = dotacionUser.filter(
-        (c) => c.id_dotacion === cumpleDotacion[i]
+        (c) => c.id_dotacion === dotacionRequeridos[i]
       );
       if (
         moment(dotacionInfo[0].fecha_vencimiento_dotacion).isBetween(
@@ -307,13 +318,17 @@ function Employees() {
           inAMonth
         )
       ) {
+        console.log("Yo dotacion envio el pendiente");
+
         return "PENDIENTE";
       }
     }
 
-    for (let i = 0; i < cumpleOtros.length; i++) {
-      let otroInfo = otrosUser.filter((c) => c.id_otro === cumpleOtros[i]);
+    for (let i = 0; i < otrosRequeridos.length; i++) {
+      let otroInfo = otrosUser.filter((c) => c.id_otro === otrosRequeridos[i]);
       if (moment(otroInfo[0].fecha_vencimiento_otro).isBetween(now, inAMonth)) {
+        console.log("Yo otros envio el pendiente");
+
         return "PENDIENTE";
       }
     }
