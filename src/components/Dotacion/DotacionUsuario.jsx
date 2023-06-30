@@ -21,6 +21,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 import moment from "moment";
 import { useEffect, useState } from "react";
+import GetColumnsSearchProps from "../GetColumnsSearchProps";
 
 export function DotacionUsuario({ employee }) {
   const [dotacionUsuario, setDotacionUsuario] = useState([]);
@@ -95,15 +96,19 @@ export function DotacionUsuario({ employee }) {
     {
       title: "Nombre del elemento de dotación",
       dataIndex: "nombre_dotacion",
+      key: "nombre_dotacion",
+      ...GetColumnsSearchProps("nombre_dotacion"),
     },
     {
       title: "Fecha de Realización",
       dataIndex: "fecha_realizacion_dotacion",
+      key: "fecha_realizacion_dotacion",
       render: (text) => <>{moment(text).format("YYYY/MM/DD")}</>,
     },
     {
       title: "Fecha de Vencimiento",
       dataIndex: "fecha_vencimiento_dotacion",
+      key: "fecha_vencimiento_dotacion",
       render: (text, record) => {
         const now = moment();
         const inAMonth = moment().add(1, "M");
@@ -136,6 +141,7 @@ export function DotacionUsuario({ employee }) {
     {
       title: "URL del Certificado",
       dataIndex: "url_certificado",
+      key: "url_certificado_dotacion",
       render: () => (
         <a
           href="https://africau.edu/images/default/sample.pdf"

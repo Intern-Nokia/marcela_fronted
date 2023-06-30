@@ -1,19 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
+import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import Courses from "./components/Courses/Courses";
-import Employees from "./components/Employees/Employees";
-import EmployeeInfo from "./components/Employees/EmployeeInfo";
-import { Profiles } from "./components/Profiles/Profiles";
-import { EmployeeProfile } from "./components/Employees/EmployeeProfile";
-import { RequisitosPerfil } from "./components/Profiles/RequisitosPerfil";
-import Exams from "./components/Exams/Exams";
 import { Dotacion } from "./components/Dotacion/Dotacion";
+import EmployeeInfo from "./components/Employees/EmployeeInfo";
+import { EmployeeProfile } from "./components/Employees/EmployeeProfile";
+import Employees from "./components/Employees/Employees";
+import Exams from "./components/Exams/Exams";
 import { Otros } from "./components/Otros/Otros";
+import { Profiles } from "./components/Profiles/Profiles";
+import { RequisitosPerfil } from "./components/Profiles/RequisitosPerfil";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

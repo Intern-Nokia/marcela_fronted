@@ -5,7 +5,6 @@ import {
   DatePicker,
   Divider,
   Form,
-  Input,
   Modal,
   Table,
   Tag,
@@ -20,6 +19,7 @@ import moment from "moment/moment";
 import { useForm } from "antd/es/form/Form";
 import { props } from "../Requests/Upload";
 import dayjs from "dayjs";
+import GetColumnsSearchProps from "../GetColumnsSearchProps";
 
 const { Text } = Typography;
 
@@ -233,8 +233,6 @@ export function EmployeeProfile() {
       moment(curso.fecha_vencimiento_curso) > now
   );
 
-  console.log(cursosEmpleado);
-
   const cursosRequisito = cursosPerfil.filter(
     (curso) => curso.id_perfil === employee.id_perfil
   );
@@ -270,7 +268,8 @@ export function EmployeeProfile() {
       title: "Nombre del curso",
       dataIndex: "nombre_curso",
       key: "nombre_curso",
-      render: (text, record) => {
+      ...GetColumnsSearchProps("nombre_curso"),
+      render: (text) => {
         return <Text strong>{text}</Text>;
       },
     },
@@ -391,7 +390,8 @@ export function EmployeeProfile() {
       title: "Nombre del examen",
       dataIndex: "nombre_examen",
       key: "nombre_examen",
-      render: (text, record) => {
+      ...GetColumnsSearchProps("nombre_examen"),
+      render: (text) => {
         return <Text strong>{text}</Text>;
       },
     },
@@ -512,6 +512,7 @@ export function EmployeeProfile() {
       title: "Nombre del elemento de dotación",
       dataIndex: "nombre_dotacion",
       key: "nombre_dotacion",
+      ...GetColumnsSearchProps("nombre_dotacion"),
       render: (text, record) => {
         return <Text strong>{text}</Text>;
       },
@@ -630,6 +631,7 @@ export function EmployeeProfile() {
       title: "Nombre del otro",
       dataIndex: "nombre_otro",
       key: "nombre_otro",
+      ...GetColumnsSearchProps("nombre_otro"),
       render: (text, record) => {
         return <Text strong>{text}</Text>;
       },

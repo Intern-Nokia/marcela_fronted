@@ -23,6 +23,7 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 import { props } from "../Requests/Upload";
 import dayjs from "dayjs";
+import GetColumnsSearchProps from "../GetColumnsSearchProps";
 
 export function CursosUsuario({ employee }) {
   const [cursosUsuario, setCursosUsuario] = useState([]);
@@ -99,15 +100,19 @@ export function CursosUsuario({ employee }) {
     {
       title: "Nombre del curso",
       dataIndex: "nombre_curso",
+      key: "nombre_curso",
+      ...GetColumnsSearchProps("nombre_curso"),
     },
     {
       title: "Fecha de Realización",
       dataIndex: "fecha_realizacion_curso",
+      key: "fecha_realizacion_curso",
       render: (text) => <>{moment(text).format("YYYY/MM/DD")}</>,
     },
     {
       title: "Fecha de Vencimiento",
       dataIndex: "fecha_vencimiento_curso",
+      key: "fecha_vencimiento_curso",
       render: (text, record) => {
         const now = moment();
         const inAMonth = moment().add(1, "M");
@@ -140,6 +145,7 @@ export function CursosUsuario({ employee }) {
     {
       title: "URL del Certificado",
       dataIndex: "url_certificado",
+      key: "url_certificado_curso",
       render: () => (
         <a
           href="https://africau.edu/images/default/sample.pdf"

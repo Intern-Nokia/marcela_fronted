@@ -284,15 +284,8 @@ function Employees() {
       if (
         moment(cursoInfo[0].fecha_vencimiento_curso).isBetween(now, inAMonth)
       ) {
-        console.log("Yo cursos envio el pendiente");
         return "PENDIENTE";
       }
-    }
-
-    if (record.CI === "12345678-9") {
-      console.log("ExamenUser", examenesUser);
-      console.log("examenesRequeridos", examenesRequeridos);
-      console.log("CumpleExamenes", cumpleExamenes);
     }
 
     for (let i = 0; i < examenesRequeridos.length; i++) {
@@ -302,8 +295,6 @@ function Employees() {
       if (
         moment(examenInfo[0].fecha_vencimiento_examen).isBetween(now, inAMonth)
       ) {
-        console.log("Yo examenes envio el pendiente");
-
         return "PENDIENTE";
       }
     }
@@ -318,8 +309,6 @@ function Employees() {
           inAMonth
         )
       ) {
-        console.log("Yo dotacion envio el pendiente");
-
         return "PENDIENTE";
       }
     }
@@ -327,8 +316,6 @@ function Employees() {
     for (let i = 0; i < otrosRequeridos.length; i++) {
       let otroInfo = otrosUser.filter((c) => c.id_otro === otrosRequeridos[i]);
       if (moment(otroInfo[0].fecha_vencimiento_otro).isBetween(now, inAMonth)) {
-        console.log("Yo otros envio el pendiente");
-
         return "PENDIENTE";
       }
     }

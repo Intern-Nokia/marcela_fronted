@@ -21,6 +21,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 import moment from "moment";
 import { useEffect, useState } from "react";
+import GetColumnsSearchProps from "../GetColumnsSearchProps";
 
 export function ExamenesUsuario({ employee }) {
   const [examenUsuario, setExamenUsuario] = useState([]);
@@ -96,15 +97,19 @@ export function ExamenesUsuario({ employee }) {
     {
       title: "Nombre del Exámen",
       dataIndex: "nombre_examen",
+      key: "nombre_examen",
+      ...GetColumnsSearchProps("nombre_examen"),
     },
     {
       title: "Fecha de Realización",
       dataIndex: "fecha_realizacion_examen",
+      key: "fecha_realizacion_examen",
       render: (text) => <>{moment(text).format("YYYY/MM/DD")}</>,
     },
     {
       title: "Fecha de Vencimiento",
       dataIndex: "fecha_vencimiento_examen",
+      key: "fecha_vencimiento_examen",
       render: (text, record) => {
         const now = moment();
         const inAMonth = moment().add(1, "M");
@@ -137,6 +142,7 @@ export function ExamenesUsuario({ employee }) {
     {
       title: "URL del Certificado",
       dataIndex: "url_certificado",
+      key: "url_certificado_examen",
       render: () => (
         <a
           href="https://africau.edu/images/default/sample.pdf"

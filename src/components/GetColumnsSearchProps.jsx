@@ -75,6 +75,7 @@ const GetColumnsSearchProps = (dataIndex) => {
   );
 
   return {
+    sorter: (a, b) => a[dataIndex].localeCompare(b[dataIndex]),
     filterDropdown,
     filterIcon: (filtered) => (
       <SearchOutlined

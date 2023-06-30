@@ -4,11 +4,9 @@ import {
   UserOutlined,
   ToolOutlined,
 } from "@ant-design/icons";
-import { Input, Menu } from "antd";
+import { Menu } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
 import "./App.css";
-
-const { Search } = Input;
 
 function App() {
   const navigate = useNavigate();
@@ -59,7 +57,6 @@ function App() {
           <Menu.Item
             onClick={() => navigate("/otros-requisitos")}
             className="menu-item"
-            // icon={<ToolOutlined style={{fontSize: 32}} />}
             key="otros"
           >
             Otros Requisitos
@@ -69,10 +66,6 @@ function App() {
       <div style={{ width: "80%", margin: "auto" }}>
         <Outlet></Outlet>
       </div>
-
-      {/* <Employees employee={employee}/> */}
-      {/* {viewProjects && employee && <Projects searchEmployee={employee} />} */}
-      {/* {viewCourse && employee && <Courses user={employee}/>} */}
     </>
   );
 }

@@ -12,8 +12,8 @@ import {
 } from "antd";
 import { useForm } from "antd/es/form/Form";
 import { useEffect, useState } from "react";
-import { cursos, nuevoCurso } from "../Requests/CursosRequests";
 import GetColumnsSearchProps from "../GetColumnsSearchProps";
+import { cursos, nuevoCurso } from "../Requests/CursosRequests";
 
 function Courses() {
   const [dataCursos, setDataCursos] = useState([]);
@@ -44,7 +44,6 @@ function Courses() {
   const getCursos = async () => {
     try {
       const result = await cursos();
-      console.log(result);
       setDataCursos(result);
     } catch (err) {
       console.log(err);

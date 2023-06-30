@@ -21,6 +21,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 import moment from "moment";
 import { useEffect, useState } from "react";
+import GetColumnsSearchProps from "../GetColumnsSearchProps";
 
 export function OtrosUsuario({ employee }) {
   const [otroUsuario, setOtroUsuario] = useState([]);
@@ -91,15 +92,19 @@ export function OtrosUsuario({ employee }) {
     {
       title: "Nombre del otro requisito",
       dataIndex: "nombre_otro",
+      key: "nombre_otro",
+      ...GetColumnsSearchProps("nombre_otro"),
     },
     {
       title: "Fecha de Realización",
       dataIndex: "fecha_realizacion_otro",
+      key: "fecha_realizacion_otro",
       render: (text) => <>{moment(text).format("YYYY/MM/DD")}</>,
     },
     {
       title: "Fecha de Vencimiento",
       dataIndex: "fecha_vencimiento_otro",
+      key: "fecha_vencimiento_otro",
       render: (text, record) => {
         const now = moment();
         const inAMonth = moment().add(1, "M");
@@ -132,6 +137,7 @@ export function OtrosUsuario({ employee }) {
     {
       title: "URL del Certificado",
       dataIndex: "url_certificado",
+      key: "url_certificado_otro",
       render: () => (
         <a
           href="https://africau.edu/images/default/sample.pdf"

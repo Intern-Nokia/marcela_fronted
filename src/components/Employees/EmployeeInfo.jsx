@@ -38,12 +38,6 @@ function EmployeeInfo() {
       <ExamenesUsuario employee={employee} />
       <DotacionUsuario employee={employee} />
       <OtrosUsuario employee={employee} />
-
-      {/* <Profiles employee={employee}/> */}
-      {/* <Courses employee={employee} />
-      <Exams employee={employee} />
-      {/* <Clients employee={employee}/> */}
-      {/* <Dotacion employee={employee} /> */}
     </div>
   );
 }
@@ -84,7 +78,7 @@ function DataEmployee() {
         checked={formDisabled}
         checkedChildren="Editar trabajador"
         unCheckedChildren="Editar trabajador"
-        onChange={(e) => setFormDisabled(!formDisabled)}
+        onChange={() => setFormDisabled(!formDisabled)}
         style={{
           display: "inline-flex",
           flexDirection: "row-reverse",
