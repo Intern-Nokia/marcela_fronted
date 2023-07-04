@@ -14,24 +14,26 @@ import Exams from "./components/Exams/Exams";
 import { Otros } from "./components/Otros/Otros";
 import { Profiles } from "./components/Profiles/Profiles";
 import { RequisitosPerfil } from "./components/Profiles/RequisitosPerfil";
+import Login from "./Login";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />}>
-        <Route path="/employees" element={<Employees />} />
-        <Route path="/examenes" element={<Exams />} />
-        <Route path="/dotacion" element={<Dotacion />} />
-        <Route path="/cursos" element={<Courses />} />
-        <Route path="/otros-requisitos" element={<Otros />} />
-        <Route path="/infoEmployee" element={<EmployeeInfo />} />
-        <Route path="/perfiles" element={<Profiles />} />
+      <Route exact path="/" element={<Login />} />
+      <Route path="/home" element={<App />}>
+        <Route path="/home/employees" element={<Employees />} />
+        <Route path="/home/examenes" element={<Exams />} />
+        <Route path="/home/dotacion" element={<Dotacion />} />
+        <Route path="/home/cursos" element={<Courses />} />
+        <Route path="/home/otros-requisitos" element={<Otros />} />
+        <Route path="/home/infoEmployee" element={<EmployeeInfo />} />
+        <Route path="/home/perfiles" element={<Profiles />} />
         <Route
-          path="/perfiles/requisitos-perfil"
+          path="/home/perfiles/requisitos-perfil"
           element={<RequisitosPerfil />}
         />
-        <Route path="/employees/profile" element={<EmployeeProfile />} />
+        <Route path="/home/employees/profile" element={<EmployeeProfile />} />
       </Route>
     </Routes>
   </BrowserRouter>

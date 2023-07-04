@@ -64,6 +64,52 @@
   align-items: center;
 }
 
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("./images/1345163.webp");
+  background-size: cover;
+}
+
+.login-card {
+  width: 500px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.login-form-input {
+  margin-bottom: 16px;
+}
+
+.login-form-input input {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.login-form-input input:focus {
+  outline: none;
+  border-color: #1890ff;
+  box-shadow: 0 0 5px rgba(24, 144, 255, 0.2);
+}
+
+
+.login-form-button {
+  width: 100%;
+}
+
+.login-form-title {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: darkcyan;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

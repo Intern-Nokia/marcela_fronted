@@ -16,7 +16,7 @@ function App() {
       <div>
         <Menu mode="horizontal" className="menu">
           <Menu.Item
-            onClick={() => navigate("/employees")}
+            onClick={() => navigate("employees")}
             className="menu-item"
             key="employees"
             icon={<UserOutlined style={{ fontSize: "32px" }} />}
@@ -24,7 +24,7 @@ function App() {
             Empleados
           </Menu.Item>
           <Menu.Item
-            onClick={() => navigate("/cursos")}
+            onClick={() => navigate("cursos")}
             className="menu-item"
             key="cursos"
             icon={<BookOutlined style={{ fontSize: "32px" }} />}
@@ -32,7 +32,7 @@ function App() {
             Cursos
           </Menu.Item>
           <Menu.Item
-            onClick={() => navigate("/perfiles")}
+            onClick={() => navigate("perfiles")}
             className="menu-item"
             key="perfiles"
             icon={<BulbOutlined style={{ fontSize: "32px" }} />}
@@ -40,14 +40,14 @@ function App() {
             Perfiles
           </Menu.Item>
           <Menu.Item
-            onClick={() => navigate("/examenes")}
+            onClick={() => navigate("examenes")}
             className="menu-item"
             key="examenes"
           >
             Exámenes
           </Menu.Item>
           <Menu.Item
-            onClick={() => navigate("/dotacion")}
+            onClick={() => navigate("dotacion")}
             className="menu-item"
             icon={<ToolOutlined style={{ fontSize: 32 }} />}
             key="dotacion"
@@ -55,7 +55,7 @@ function App() {
             Dotación
           </Menu.Item>
           <Menu.Item
-            onClick={() => navigate("/otros-requisitos")}
+            onClick={() => navigate("otros-requisitos")}
             className="menu-item"
             key="otros"
           >
