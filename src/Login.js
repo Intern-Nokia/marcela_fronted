@@ -1,7 +1,7 @@
-import { Alert, Button, Form, Input, message } from "antd";
+import { Alert, Button, Form, Input } from "antd";
 import { login } from "./components/Requests/Login";
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Login({ onLogin }) {
   const navigate = useNavigate();
@@ -13,7 +13,6 @@ export default function Login({ onLogin }) {
       setError(true);
     } else {
       setError(null);
-      onLogin(true);
       navigate("/home");
     }
   };
