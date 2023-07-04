@@ -5,15 +5,6 @@ import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
-import Courses from "./components/Courses/Courses";
-import { Dotacion } from "./components/Dotacion/Dotacion";
-import EmployeeInfo from "./components/Employees/EmployeeInfo";
-import { EmployeeProfile } from "./components/Employees/EmployeeProfile";
-import Employees from "./components/Employees/Employees";
-import Exams from "./components/Exams/Exams";
-import { Otros } from "./components/Otros/Otros";
-import { Profiles } from "./components/Profiles/Profiles";
-import { RequisitosPerfil } from "./components/Profiles/RequisitosPerfil";
 import Login from "./Login";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -21,20 +12,7 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route exact path="/" element={<Login />} />
-      <Route path="/home" element={<App />}>
-        <Route path="/home/employees" element={<Employees />} />
-        <Route path="/home/examenes" element={<Exams />} />
-        <Route path="/home/dotacion" element={<Dotacion />} />
-        <Route path="/home/cursos" element={<Courses />} />
-        <Route path="/home/otros-requisitos" element={<Otros />} />
-        <Route path="/home/infoEmployee" element={<EmployeeInfo />} />
-        <Route path="/home/perfiles" element={<Profiles />} />
-        <Route
-          path="/home/perfiles/requisitos-perfil"
-          element={<RequisitosPerfil />}
-        />
-        <Route path="/home/employees/profile" element={<EmployeeProfile />} />
-      </Route>
+      <Route path="/home/*" element={<App />} />
     </Routes>
   </BrowserRouter>
 );

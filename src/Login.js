@@ -3,10 +3,9 @@ import { login } from "./components/Requests/Login";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Login({ onLogin }) {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const onFinish = async (values) => {
     const res = await login(values);
@@ -14,17 +13,15 @@ export default function Login() {
       setError(true);
     } else {
       setError(null);
-      setIsLoggedIn(true);
+      onLogin(true);
+      navigate("/home");
     }
   };
-
-  if (isLoggedIn) {
-    return <Navigate to="/home" replace={true} />;
-  }
 
   const onFinishFailed = (errorInfo) => {
     console.log(errorInfo);
   };
+
   return (
     <div className="login-container">
       <div className="login-card">
