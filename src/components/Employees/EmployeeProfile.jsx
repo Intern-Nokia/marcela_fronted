@@ -27,6 +27,9 @@ export function EmployeeProfile() {
   const location = useLocation();
   const employee = location.state.employee;
 
+  const now = moment();
+  const inAMonth = moment().add(1, "M");
+
   /* CUMPLIMIENTO CURSOS Vs. REQUISITOS CURSOS */
   const [cursosUsuario, setCursosUsuario] = useState([]);
   const [cursosPerfil, setCursosPerfil] = useState([]);
@@ -61,6 +64,7 @@ export function EmployeeProfile() {
     }
     values["fecha_vencimiento"] = values.fecha_vencimiento_otro;
     values["fecha_presentacion"] = values.fecha_presentacion_otro;
+    values["certificado"] = values.certificado.file.response.url;
 
     delete values["fecha_vencimiento_otro"];
     delete values["fecha_presentacion_otro"];
@@ -129,6 +133,7 @@ export function EmployeeProfile() {
     }
     values["fecha_vencimiento"] = values.fecha_vencimiento_examen;
     values["fecha_presentacion"] = values.fecha_presentacion_examen;
+    values["certificado"] = values.certificado.file.response.url;
 
     delete values["fecha_vencimiento_examen"];
     delete values["fecha_presentacion_examen"];
@@ -163,10 +168,12 @@ export function EmployeeProfile() {
     }
     values["fecha_vencimiento"] = values.fecha_vencimiento_curso;
     values["fecha_presentacion"] = values.fecha_presentacion_curso;
+    values["certificado"] = values.certificado.file.response.url;
 
     delete values["fecha_vencimiento_curso"];
     delete values["fecha_presentacion_curso"];
 
+    // console.log(values);
     axios
       .post("http://localhost:5000/personal/cursos", values)
       .then((res) => {
@@ -194,9 +201,13 @@ export function EmployeeProfile() {
   }, []);
 
   const statusColumn = (text) => {
-    const now = moment();
-    const inAMonth = moment().add(1, "M");
-
+    if (text === undefined) {
+      return (
+        <>
+          <Tag color="red">NO TIENE O VENCIDO</Tag>
+        </>
+      );
+    }
     if (moment(text).isBetween(now, inAMonth)) {
       return (
         <>
@@ -217,7 +228,6 @@ export function EmployeeProfile() {
         </>
       );
     }
-
     return (
       <>
         <Tag color="red">NO TIENE O VENCIDO</Tag>
@@ -225,7 +235,7 @@ export function EmployeeProfile() {
     );
   };
 
-  const now = moment();
+  // const now = moment();
 
   const cursosEmpleado = cursosUsuario.filter(
     (curso) =>
@@ -246,7 +256,7 @@ export function EmployeeProfile() {
       const empleadoCumple = cursosEmpleado.find(
         ({ nombre_curso }) => nombre_curso === cursoRequerido.nombre_curso
       );
-      let now = moment();
+      // let now = moment();
       if (now.isBefore(empleadoCumple.fecha_vencimiento_curso)) {
         empleadoCumple["status"] = "Cumple";
       } else {
@@ -297,12 +307,15 @@ export function EmployeeProfile() {
       title: "Certificado",
       dataIndex: "certificado_curso",
       key: "certificado_curso",
-      render: (_, record) => {
+      render: (text, record) => {
         if (record.status === "Cumple") {
           return (
             <a
-              href="https://africau.edu/images/default/sample.pdf"
+              href={
+                text ? text : "https://africau.edu/images/default/sample.pdf"
+              }
               target="_blank"
+              rel="noreferrer"
               style={{ fontSize: "32px" }}
             >
               <FilePdfTwoTone twoToneColor="#eb2f96" />
@@ -368,7 +381,7 @@ export function EmployeeProfile() {
       const empleadoCumple = examenesEmpleado.find(
         ({ nombre_examen }) => nombre_examen === examenRequerido.nombre_examen
       );
-      let now = moment();
+      // let now = moment();
       if (now.isBefore(empleadoCumple.fecha_vencimiento_examen)) {
         empleadoCumple["status"] = "Cumple";
       } else {
@@ -418,12 +431,15 @@ export function EmployeeProfile() {
       title: "Certificado",
       dataIndex: "certificado_examen",
       key: "certificado_examen",
-      render: (_, record) => {
+      render: (text, record) => {
         if (record.status === "Cumple") {
           return (
             <a
-              href="https://africau.edu/images/default/sample.pdf"
+              href={
+                text ? text : "https://africau.edu/images/default/sample.pdf"
+              }
               target="_blank"
+              rel="noreferrer"
               style={{ fontSize: "32px" }}
             >
               <FilePdfTwoTone twoToneColor="#eb2f96" />
@@ -490,7 +506,7 @@ export function EmployeeProfile() {
         ({ nombre_dotacion }) =>
           nombre_dotacion === dotacionRequerido.nombre_dotacion
       );
-      let now = moment();
+      // let now = moment();
       if (now.isBefore(empleadoCumple.fecha_vencimiento_dotacion)) {
         empleadoCumple["status"] = "Cumple";
       } else {
@@ -537,20 +553,10 @@ export function EmployeeProfile() {
       },
     },
     {
-      title: "Certificado",
-      dataIndex: "certificado_dotacion",
-      key: "certificado_dotacion",
+      key: "accion_dotacion",
       render: (_, record) => {
         if (record.status === "Cumple") {
-          return (
-            <a
-              href="https://africau.edu/images/default/sample.pdf"
-              target="_blank"
-              style={{ fontSize: "32px" }}
-            >
-              <FilePdfTwoTone twoToneColor="#eb2f96" />
-            </a>
-          );
+          return <></>;
         } else {
           return (
             <Button
@@ -609,7 +615,7 @@ export function EmployeeProfile() {
       const empleadoCumple = otrosEmpleado.find(
         ({ nombre_otro }) => nombre_otro === otroRequerido.nombre_otro
       );
-      let now = moment();
+      // let now = moment();
       if (now.isBefore(empleadoCumple.fecha_vencimiento_otro)) {
         empleadoCumple["status"] = "Cumple";
       } else {
@@ -659,12 +665,15 @@ export function EmployeeProfile() {
       title: "Certificado",
       dataIndex: "certificado_otro",
       key: "certificado_otro",
-      render: (_, record) => {
+      render: (text, record) => {
         if (record.status === "Cumple") {
           return (
             <a
-              href="https://africau.edu/images/default/sample.pdf"
+              href={
+                text ? text : "https://africau.edu/images/default/sample.pdf"
+              }
               target="_blank"
+              rel="noreferrer"
               style={{ fontSize: "32px" }}
             >
               <FilePdfTwoTone twoToneColor="#eb2f96" />
@@ -693,10 +702,8 @@ export function EmployeeProfile() {
   return (
     <div>
       <h1>
-        Cumplimiento de Requisitos del perfil{" "}
-        <a>
-          {employee.cliente} : {employee.nombre_perfil} ({employee.trabajador})
-        </a>{" "}
+        Cumplimiento de Requisitos del perfil {employee.cliente} :{" "}
+        {employee.nombre_perfil} ({employee.trabajador})
       </h1>
       {/**********************************CURSOS **************************** */}
       <Divider orientation="left">
@@ -773,7 +780,7 @@ export function EmployeeProfile() {
               }
             />
           </Form.Item>
-          <Form.Item label="Cargar Certificado">
+          <Form.Item label="Cargar Certificado" name="certificado">
             <Upload {...props} maxCount={1} accept=".pdf">
               <Button icon={<UploadOutlined />}>Upload</Button>
             </Upload>
@@ -856,7 +863,7 @@ export function EmployeeProfile() {
               }
             />
           </Form.Item>
-          <Form.Item label="Cargar Certificado">
+          <Form.Item label="Cargar Certificado" name="certificado">
             <Upload {...props} maxCount={1} accept=".pdf">
               <Button icon={<UploadOutlined />}>Upload</Button>
             </Upload>
@@ -939,11 +946,6 @@ export function EmployeeProfile() {
               }
             />
           </Form.Item>
-          <Form.Item label="Cargar Certificado">
-            <Upload {...props} maxCount={1} accept=".pdf">
-              <Button icon={<UploadOutlined />}>Upload</Button>
-            </Upload>
-          </Form.Item>
         </Form>
       </Modal>
       {/***************************************OTROS REQUISITOS************* */}
@@ -1016,7 +1018,7 @@ export function EmployeeProfile() {
               }
             />
           </Form.Item>
-          <Form.Item label="Cargar Certificado">
+          <Form.Item label="Cargar Certificado" name="certificado">
             <Upload {...props} maxCount={1} accept=".pdf">
               <Button icon={<UploadOutlined />}>Upload</Button>
             </Upload>

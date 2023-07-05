@@ -333,7 +333,7 @@ function Employees() {
         <Button
           type="link"
           onClick={() => {
-            navigate("/infoEmployee", { state: { employee: record } });
+            navigate("infoEmployee", { state: { employee: record } });
           }}
         >
           <Text strong style={{ color: "#1677ff" }}>

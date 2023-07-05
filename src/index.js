@@ -27,7 +27,7 @@ root.render(
         <Route path="/home/dotacion" element={<Dotacion />} />
         <Route path="/home/cursos" element={<Courses />} />
         <Route path="/home/otros-requisitos" element={<Otros />} />
-        <Route path="/home/infoEmployee" element={<EmployeeInfo />} />
+        <Route path="/home/employees/infoEmployee" element={<EmployeeInfo />} />
         <Route path="/home/perfiles" element={<Profiles />} />
         <Route
           path="/home/perfiles/requisitos-perfil"
