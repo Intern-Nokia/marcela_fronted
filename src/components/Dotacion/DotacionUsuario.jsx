@@ -138,42 +138,7 @@ export function DotacionUsuario({ employee }) {
         );
       },
     },
-    {
-      title: "URL del Certificado",
-      dataIndex: "url_certificado",
-      key: "url_certificado_dotacion",
-      render: () => (
-        <a
-          href="https://africau.edu/images/default/sample.pdf"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <FilePdfTwoTone
-            twoToneColor="#eb2f96"
-            style={{ fontSize: "1.8rem", textAlign: "center", margin: 0 }}
-          />
-        </a>
-      ),
-    },
   ];
-
-  const props = {
-    name: "file",
-    action: "http://localhost:5000/upload",
-    headers: {
-      authorization: "authorization-text",
-    },
-    onChange(info) {
-      if (info.file.status !== "uploading") {
-        console.log(info.file, info.fileList);
-      }
-      if (info.file.status === "done") {
-        message.success(`${info.file.name} file uploaded successfully`);
-      } else if (info.file.status === "error") {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-  };
 
   return (
     <div>
@@ -261,11 +226,6 @@ export function DotacionUsuario({ employee }) {
                 current && current < dayjs().endOf("day")
               }
             />
-          </Form.Item>
-          <Form.Item label="Cargar Certificado">
-            <Upload {...props} maxCount={1} accept=".pdf">
-              <Button icon={<UploadOutlined />}>Upload</Button>
-            </Upload>
           </Form.Item>
         </Form>
       </Modal>

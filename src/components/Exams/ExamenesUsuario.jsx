@@ -41,6 +41,7 @@ export function ExamenesUsuario({ employee }) {
   const handleCreate = (values) => {
     values["persona"] = employee.CI;
     values.fecha_presentacion = values.fecha_presentacion.format("YYYY/MM/DD");
+    values.certificado = values.certificado.file.response.url;
 
     if (values.fecha_vencimiento === undefined) {
       const vencimiento = moment(values.fecha_presentacion);
@@ -141,11 +142,11 @@ export function ExamenesUsuario({ employee }) {
     },
     {
       title: "URL del Certificado",
-      dataIndex: "url_certificado",
+      dataIndex: "certificado_examen",
       key: "url_certificado_examen",
-      render: () => (
+      render: (text) => (
         <a
-          href="https://africau.edu/images/default/sample.pdf"
+          href={text ? text : "https://africau.edu/images/default/sample.pdf"}
           target="_blank"
           rel="noreferrer"
         >
@@ -244,7 +245,11 @@ export function ExamenesUsuario({ employee }) {
               },
             ]}
           >
-            <DatePicker />
+            <DatePicker
+              disabledDate={(current) =>
+                current && current > dayjs().endOf("day")
+              }
+            />
           </Form.Item>
           <Form.Item>
             <Checkbox
@@ -262,7 +267,7 @@ export function ExamenesUsuario({ employee }) {
               }
             />
           </Form.Item>
-          <Form.Item label="Cargar Certificado">
+          <Form.Item label="Cargar Certificado" name="certificado">
             <Upload {...props} maxCount={1} accept=".pdf">
               <Button icon={<UploadOutlined />}>Upload</Button>
             </Upload>

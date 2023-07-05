@@ -39,6 +39,7 @@ export function OtrosUsuario({ employee }) {
   const handleCreate = (values) => {
     values["persona"] = employee.CI;
     values.fecha_presentacion = values.fecha_presentacion.format("YYYY/MM/DD");
+    values.certificado = values.certificado.file.response.url;
 
     if (values.fecha_vencimiento === undefined) {
       const vencimiento = moment(values.fecha_presentacion);
@@ -47,8 +48,6 @@ export function OtrosUsuario({ employee }) {
     } else {
       values.fecha_vencimiento = values.fecha_vencimiento.format("YYYY/MM/DD");
     }
-
-    console.log(values);
 
     axios
       .post("http://localhost:5000/personal/otros", values)
@@ -136,11 +135,11 @@ export function OtrosUsuario({ employee }) {
     },
     {
       title: "URL del Certificado",
-      dataIndex: "url_certificado",
+      dataIndex: "certificado_otro",
       key: "url_certificado_otro",
-      render: () => (
+      render: (text) => (
         <a
-          href="https://africau.edu/images/default/sample.pdf"
+          href={text ? text : "https://africau.edu/images/default/sample.pdf"}
           target="_blank"
           rel="noreferrer"
         >
@@ -238,7 +237,11 @@ export function OtrosUsuario({ employee }) {
               },
             ]}
           >
-            <DatePicker />
+            <DatePicker
+              disabledDate={(current) =>
+                current && current > dayjs().endOf("day")
+              }
+            />
           </Form.Item>
           <Form.Item>
             <Checkbox
@@ -256,7 +259,7 @@ export function OtrosUsuario({ employee }) {
               }
             />
           </Form.Item>
-          <Form.Item label="Cargar Certificado">
+          <Form.Item label="Cargar Certificado" name="certificado">
             <Upload {...props} maxCount={1} accept=".pdf">
               <Button icon={<UploadOutlined />}>Upload</Button>
             </Upload>
