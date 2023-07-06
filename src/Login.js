@@ -33,6 +33,9 @@ export default function Login({ onLogin }) {
           autoComplete="off"
         >
           <Form.Item>
+            <h1 style={{ textAlign: "center" }}>
+              SISTEMA DE VERIFICACIÓN DE ACREDITACIONES
+            </h1>
             <h1 className="login-form-title">NOKIA</h1>
           </Form.Item>
           <Form.Item
