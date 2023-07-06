@@ -326,6 +326,12 @@ function Employees() {
 
   const columns = [
     {
+      title: "Empresa",
+      dataIndex: "empresa",
+      key: "empresa",
+      ...GetColumnsSearchProps("empresa"),
+    },
+    {
       title: "Trabajador",
       dataIndex: "trabajador",
       key: "Trabajador",
